@@ -45,8 +45,8 @@ minihttpd: minihttpd.h minihttpd.cpp
 	g++ -g -o minihttpd -DSTANDALONE minihttpd.cpp -lnsl -lsocket
 
 git-commit:
-	git add Makefile *.h *.cpp  >> .local.git.out
-	git commit -a -m "Commit search engine" >> .local.git.out
+	git add Makefile *.h *.cpp  >> .local.git.out || echo
+	git commit -a -m "Commit search engine" >> .local.git.out || echo
 
 
 
