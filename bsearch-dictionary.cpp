@@ -39,10 +39,10 @@ BinarySearchDictionary::findRecord( KeyType key)
 		int flag = strcmp(key, array[mid].key);
 		if(flag < 0){ //on the left side of mid
 			high = mid - 1;
-			//mid = (low + high) / 2;
+			mid = (low + high) / 2;
 		} else if(flag > 0){ //on the right side of mid
 			low = mid + 1;
-			//mid = (low + high) / 2;
+			mid = (low + high) / 2;
 		} else { //found
 			return (DataType)array[mid].data;
 		}
@@ -73,18 +73,18 @@ BinarySearchDictionary::sort()
 		for(int j = 0; j < currentNumber - i - 1; j++){
 			if(strcmp(array[j].key, array[j+1].key) > 0){ 
 				//swap
-				ArrayDictionaryNode * temp;
-				temp->key = (char *)malloc(100 * sizeof(char));
-				temp->data = new DataType;
+				ArrayDictionaryNode temp;
+				temp.key = (char *)malloc(100 * sizeof(char));
+				temp.data = new DataType;
 
-				temp->key = array[j].key;
-				temp->data = array[j].data;
+				temp.key = array[j].key;
+				temp.data = array[j].data;
 
 				array[j].key = array[j+1].key;
 				array[j].data = array[j+1].data;
 
-				array[j+1].key = temp->key;
-				array[j+1].data = temp->data;
+				array[j+1].key = temp.key;
+				array[j+1].data = temp.data;
 			}
 		}
 	}
