@@ -44,7 +44,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 			low = mid + 1;
 			mid = (low + high) / 2;
 		} else { //found
-			return (DataType *)array[mid].data;
+			return (DataType)array[mid].data;
 		}
 	}
 
