@@ -34,7 +34,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 	int low = 0;
 	int high = currentNumber-1;
 
-		int mid = (high + low) / 2;
+	int mid = (high + low) / 2;
 	while(low <= high){
 		int flag = strcmp(key, array[mid].key);
 		if(flag < 0){ //on the left side of mid
