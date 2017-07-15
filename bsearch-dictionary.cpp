@@ -77,7 +77,14 @@ BinarySearchDictionary::sort()
 				temp->key = (char *)malloc(100 * sizeof(char));
 				temp->data = new DataType;
 
+				temp->key = array[j].key;
+				temp->data = array[j].data;
 
+				array[j].key = array[j+1].key;
+				array[j].data = array[j+1].data;
+
+				array[j+1].key = temp->key;
+				array[j+1].data = temp->data;
 			}
 		}
 	}
