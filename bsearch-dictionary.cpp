@@ -31,6 +31,22 @@ BinarySearchDictionary::findRecord( KeyType key)
 	// Use binary search
 
 	// Add your implementation here
+	int low = 0;
+	int high = currentNumber-1;
+
+	while(low <= high){
+		int mid = (high + low) / 2;
+		int flag = strcmp(key, array[mid].key);
+		if(flag < 0){ //on the left side of mid
+			high = mid - 1;
+			mid = (low + high) / 2;
+		} else if(flag > 0){ //on the right side of mid
+			low = mid + 1;
+			mid = (low + high) / 2;
+		} else { //found
+			return (DataType *)array[mid].data;
+		}
+	}
 
 	return NULL;
 }
