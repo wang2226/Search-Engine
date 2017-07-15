@@ -34,15 +34,15 @@ BinarySearchDictionary::findRecord( KeyType key)
 	int low = 0;
 	int high = currentNumber-1;
 
-	int mid = (high + low) / 2;
 	while(low <= high){
+		int mid = (high + low) / 2;
 		int flag = strcmp(key, array[mid].key);
 		if(flag < 0){ //on the left side of mid
 			high = mid - 1;
-			mid = (low + high) / 2;
+			//mid = (low + high) / 2;
 		} else if(flag > 0){ //on the right side of mid
 			low = mid + 1;
-			mid = (low + high) / 2;
+			//mid = (low + high) / 2;
 		} else { //found
 			return (DataType)array[mid].data;
 		}
