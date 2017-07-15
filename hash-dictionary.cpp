@@ -77,7 +77,27 @@ bool
 HashDictionary::removeElement(KeyType key)
 {
   // Add your code here
-	return true;
+	int h = hash(key);
+
+	HashNode * curr = buckets[h];
+	HashNode * prev;
+
+	while(curr != NULL){
+		prev = curr;
+		if(strcmp(curr->key,key) == 0){ //found
+			if(prev == NULL){	//the key to remove is the first in list
+				buckets[h] = curr->next;
+			} else {
+				prev->next = curr->next; //relink
+			}
+			free((char *)(curr->key));
+			delete curr;
+			nElements--;
+			return true;
+		}
+		curr = curr->next;
+	}
+	return false;
 }
 
 // Returns all the elements in the table as an array of strings.
