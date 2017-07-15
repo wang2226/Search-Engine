@@ -44,7 +44,7 @@ BinarySearchDictionary::findRecord( KeyType key)
 			low = mid + 1;
 			mid = (low + high) / 2;
 		} else { //found
-			return (DataType)array[mid].data;
+			return (DataType *)array[mid].data;
 		}
 	}
 
@@ -67,6 +67,20 @@ BinarySearchDictionary::sort()
 	//for (int i = 0; i < currentNumber; i++) {
 	//	printf("%s\n", array[i].key);
 	//}
+	
+	//use bubble sort
+	for(int i = 0; i < currentNumber - 1; i++){
+		for(int j = 0; j < currentNumber - i - 1; j++){
+			if(strcmp(array[j].key, array[j+1].key) > 0){ 
+				//swap
+				ArrayDictionaryNode * temp;
+				temp->key = (char *)malloc(100 * sizeof(char));
+				temp->data = new DataType;
+
+
+			}
+		}
+	}
 }
 
 
