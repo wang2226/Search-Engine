@@ -90,7 +90,7 @@ HashDictionary::removeElement(KeyType key)
 			} else {
 				prev->next = curr->next; //relink
 			}
-			free((char *)(curr->key));
+			free((char *)curr->key);
 			delete curr;
 			nElements--;
 			return true;
