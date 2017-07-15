@@ -59,6 +59,16 @@ HashDictionary::addRecord( KeyType key, DataType record)
 DataType
 HashDictionary::findRecord( KeyType key)
 {
+	int h = hash(key);
+
+	HashNode * e = buckets[h];
+
+	while(e != NULL){
+		if(strcmp(e->key,key) == 0){
+			return (DataType)e->data;
+		}
+		e = e->next;
+	}
 	return NULL;
 }
 
