@@ -1,6 +1,8 @@
 
 #include <string.h>
 #include "search-engine.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   MiniHTTPD(port)
@@ -8,6 +10,16 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   // Create dictionary of the indicated type
 
   // Populate dictionary and sort it if necessary
+  if(dictionaryType == ArrayDictionaryType)
+	  _wordToURLList = new ArrayDictionary();
+  else if(dictionaryType == HashDictionaryType)
+	  _wordToURLList = new HashDictionary();
+  else if(dictionaryType == BinarySearchDictionaryType)
+	  _wordToURLList = new BinarySearchDictionary();
+  else if(dictionaryType == AVLDictionaryType)
+	  _wordToURLList = new AVLDictionary();
+  else
+	  _wordToURLList = NULL;
 }
 
 void
