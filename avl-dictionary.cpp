@@ -174,6 +174,7 @@ AVLDictionary::restructure(AVLNode * n) {
 
 		//identify a,b,c,t0,t1,t2,t3
 		AVLNode *a, *b, *c, *t0, *t1, *t2, *t3;
+
 		if(z->right == y){
 			if(y->right == x){
 				//case 1
@@ -220,6 +221,7 @@ AVLDictionary::restructure(AVLNode * n) {
 		
 		//do rotation
 		AVLNode * p = z->parent;
+
 		if(p != NULL){
 			//not root
 			if(p->left == z){
@@ -306,6 +308,24 @@ AVLDictionary::findRecord( KeyType key)
 	while(p != NULL){
 		if(strcmp(p->key,key) == 0){
 			return (DataType)p->data;
+		} else if(strcmp(p->key,key) > 0){
+			p = p->left;
+		} else {	//p->key < key
+			p = p->right;
+		}
+	}
+
+	return NULL;
+}
+
+//Find a key in the dictionary and return corresponding node or NULL
+AVLNode *
+AVLDictionary::findNode(KeyType key){
+	AVLNode * p = root;
+
+	while(p != NULL){
+		if(strcmp(p->key,key) == 0){
+			return p;
 		} else if(strcmp(p->key,key) > 0){
 			p = p->left;
 		} else {	//p->key < key

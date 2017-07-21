@@ -30,6 +30,9 @@ public:
   // Find a key in the dictionary and return corresponding record or NULL
   DataType findRecord( KeyType key);
 
+  // Find a key in the dictionary and return corresponding node or NULL
+  AVLNode * findNode(KeyType key);
+
   // Removes one element from the table
   bool removeElement(KeyType key);
 
