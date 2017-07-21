@@ -89,7 +89,6 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	}	//while
 
 	//We need to restructure .
-	restructure(n);
 
 	if ( debug) {
 		printf("---------- Before Restructure -----------------\n");
@@ -97,6 +96,7 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	}
 	
 	// Call restructure
+	restructure(n);
 
 	if (debug) {
 		checkRecursive(root);
@@ -106,25 +106,212 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	}
 		
 	nElements++;
+
 	return true;
 }	//insert
 
 void
 AVLDictionary::restructure(AVLNode * n) {
 	//Balance the tree starting at n 
-
+	
 	//Go upwards until root is found
 
         // See class notes
 
 	// Add your implementation here
-}
+	AVLNode * z = n->parent;	//z is the root of the unbalanced subtree
+	
+	while(z != NULL){
+		//check if this z is the parent of unbalanced subtree
+		int hleft = 0;
+		if(z->left != NULL){
+			hleft = z->left->height;
+		}
+
+		int hright = 0;
+		if(z->right != NULL){
+			hright = z->right->height;
+		}
+
+		int hdiff = hright - hleft;
+		if(hdiff < 0) hdiff = -hdiff;	//obtain absolute val
+		if(hdiff <= 1){
+			//z is balanced
+			//go up to find a z that is unbalanced
+			z = z->parent;
+			continue;
+		}
+
+		//z is unbalanced
+		//find y (child of z with max height)
+		AVLNode * y = NULL;
+		int maxh = 0;
+
+		if(z->left != NULL){
+			y = z->left;	//test left
+			maxh = z->left->height;
+		}
+		if(z->right != NULL && maxh < z->right->height){
+			y = z->right;
+		}
+
+		//y found
+		assert(y != NULL);
+
+		//find x
+		AVLNode * x = NULL;
+		maxh = 0;
+		if(y->left != NULL){
+			x = y->left;
+			maxh = y->left->height;
+		}
+		if(y->right != NULL && maxh < y->right->height){
+			x = y->right;
+		}
+
+		//x found
+		assert(x != NULL);
+
+		//identify a,b,c,t0,t1,t2,t3
+		AVLNode *a, *b, *c, *t0, *t1, *t2, *t3;
+		if(z->right == y){
+			if(y->right == x){
+				//case 1
+				a = z;
+				b = y;
+				c = x;
+				t0 = z->left;
+				t1 = y->left;
+				t2 = x->left;
+				t3 = x->right;
+			} else {
+				//case 2
+				a = z;
+				c = y;
+				b = x;
+				t0 = z->left;
+				t1 = x->left;
+				t2 = x->right;
+				t3 = y->right;
+			} 
+
+		} else {
+			//case 3 or 4
+			if(y->left == x){
+				//case 3
+				a = x;
+				b = y;
+				c = z;
+				t0 = x->left;
+				t1 = x->right;
+				t2 = y->right;
+				t3 = z->right;
+			} else {
+				//case 4
+				a = y;
+				b = x;
+				c = z;
+				t0 = y->left;
+				t1 = x->left;
+				t2 = x->right;
+				t3 = z->right;
+			}
+		}	//else
+		
+		//do rotation
+		AVLNode * p = z->parent;
+		if(p != NULL){
+			//not root
+			if(p->left == z){
+				//attach b to left of p
+				p->left = b;
+			} else {
+				//attach b to right of p
+				p->right = b;
+			}
+		} else {
+			//p == NULL, then z is root
+			root = b;
+		}
+
+		//connect a,b,c to t0,t1,t2,t3
+		b->parent = p;
+		b->left = a;
+		b->right = c;
+		a->parent = b;
+		a->left = t0;
+		a->right = t1;
+		c->parent = b;
+		c->left = t2;
+		c->right = t3;
+
+		//connect parent of t0,t1,t2,t3
+		if(t0 != NULL){
+			t0->parent = a;
+		}
+		if(t1 != NULL){
+			t1->parent = a;
+		}
+		if(t2 != NULL){
+			t2->parent = c;
+		}
+		if(t3 != NULL){
+			t3->parent = c;
+		}
+
+		//fix height of a
+		int maxheight = 0;
+		if(a->left != NULL){
+			maxheight = a->left->height;
+		}
+		if(a->right != NULL && maxheight < a->right->height){
+			maxheight = a->right->height;
+		}
+		a->height = maxheight + 1;
+
+		//fix height of c
+		maxheight = 0;
+		if(c->left != NULL){
+			maxheight = c->left->height;
+		}
+		if(c->right != NULL && maxheight < c->right->height){
+			maxheight = c->right->height;
+		}
+		c->height = maxheight + 1;
+
+		//fix height of b
+		maxheight = 0;
+		if(b->left != NULL){
+			maxheight = b->left->height;
+		}
+		if(b->right != NULL && maxheight < b->right->height){
+			maxheight = b->right->height;
+		}
+		b->height = maxheight + 1;
+
+		//go up in the restructing
+		z = z->parent;
+
+	} //while
+
+}//restructure
 
 // Find a key in the dictionary and return corresponding record or NULL
 DataType
 AVLDictionary::findRecord( KeyType key)
 {
-        // Add your implementation here
+    // Add your implementation here
+	AVLNode * p = root;
+
+	while(p != NULL){
+		if(strcmp(p->key,key) == 0){
+			return (DataType)p->data;
+		} else if(strcmp(p->key,key) > 0){
+			p = p->left;
+		} else {	//p->key < key
+			p = p->right;
+		}
+	}
 
 	return NULL;
 }
