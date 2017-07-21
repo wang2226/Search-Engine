@@ -32,9 +32,64 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	// Add your implementation here
 
 	//Find node to insert into 
+	AVLNode * curr = root;
+	AVLNode * prev = NULL;
+	
+	while(curr != NULL){
+		prev = curr;
+		if(strcmp(key,curr->key) == 0){
+			//key found, substitute data
+			curr->data = record;
+			return false;
+		} else if(strcmp(key,curr->key) < 0){
+			curr = curr->left;
+		} else {	//key > curr->key
+			curr = curr->right;
+		}
+	} //while
+
 	//Node does not exist. Create it.
+	AVLNode * n = new AVLNode();
+	n->key = key;
+	n->data = record;
+	n->left = NULL;
+	n->right = NULL;
+	n->parent = NULL;
+	n->height = 1;
+
+	//test if tree is empty
+	if(prev == NULL){	//root is NULL
+		//insert n as root node
+		return false;
+	}
+
+	//tree is not empty, prev points to the parent where new node will be inserted 
+	if(strcmp(key,prev->key) < 0){
+		//insert left
+		prev->left = n;
+	} else {
+		//insert right
+		prev->right = n;
+	}
+
+	n->parent = prev;
+
 	//Height might not be valid anymore.
+	AVLNode * m = n->parent;
+	while(m != NULL){	//iterate until root
+		int maxheight = 0;
+		if(m->left != NULL){	//check if left exists
+			maxheight = m->left->height;
+		} 
+		if(m->right != NULL && m->right->height > maxheight){
+			maxheight = m->right->height;
+		}
+		m->height = maxheight + 1;
+		m = m->parent;	//go to the parent to compute height
+	}	//while
+
 	//We need to restructure .
+	restructure(n);
 
 	if ( debug) {
 		printf("---------- Before Restructure -----------------\n");
@@ -50,8 +105,9 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 		printNode("", root, 0);
 	}
 		
+	nElements++;
 	return true;
-}
+}	//insert
 
 void
 AVLDictionary::restructure(AVLNode * n) {
