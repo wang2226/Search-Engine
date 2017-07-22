@@ -392,11 +392,11 @@ AVLDictionary::removeElement(KeyType key)
 		temp.data = node->data;
 
 		node->height = node->right->height;
-		strcpy((char *)node->key, node->right->key);
+		node->key = strdup((char *)node->right->key);
 		node->data = node->right->data;
 
 		node->right->height = temp.height;
-		strcpy((char *)node->right->key, temp.key);
+		node->right->key = strdup((char *)temp.key);
 		node->right->data = temp.data;
 
 		delete node->right;
@@ -422,15 +422,15 @@ AVLDictionary::removeElement(KeyType key)
 		//swap node with its left child and delete node
 		AVLNode temp;
 		temp.height = node->height;
-		strcpy((char *)temp.key, node->key);
+		temp.key = strdup((char *)node->key);
 		temp.data = node->data;
 
 		node->height = node->left->height;
-		strcpy((char *)node->key, node->left->key);
+		node->key = strdup((char *)node->left->key);
 		node->data = node->left->data;
 
 		node->left->height = temp.height;
-		strcpy((char *)node->left->key, temp.key);
+		node->left->key = strdup((char *)temp.key);
 		node->left->data = temp.data;
 
 		delete node->left;
@@ -470,15 +470,15 @@ AVLDictionary::removeElement(KeyType key)
 		//swap node with either successor or predecessor
 		AVLNode temp;
 		temp.height = node->height;
-		strcpy((char *)temp.key, node->key);
+		temp.key = strdup((char *)node->key);
 		temp.data = node->data;
 
 		node->height = p->height;
-		strcpy((char *)node->key, p->key);
+		node->key = strdup((char *)p->key);
 		node->data = p->data;
 
 		p->height = temp.height;
-		strcpy((char *)p->key, temp.key);
+		p->key = strdup((char *)temp.key);
 		p->data = temp.data;
 
 		//delete node
