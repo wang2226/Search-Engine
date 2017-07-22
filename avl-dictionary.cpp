@@ -358,10 +358,9 @@ AVLDictionary::removeElement(KeyType key)
 	}
 		
 	if(node->left == NULL && node->right == NULL){	//node to remove has no children
-		if(node->parent == NULL){
-			delete node;
-			return false;
-		}
+if(node->parent == NULL)
+	return false;
+
 		if(node == node->parent->left){	//node to remove is its parent's left child
 			node->parent->left = NULL;
 		} else {	//node to remove is its parent's right child
