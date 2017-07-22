@@ -388,7 +388,7 @@ AVLDictionary::removeElement(KeyType key)
 		//swap node to remove with its right child and delete node
 		AVLNode temp;
 		temp.height = node->height;
-		strcpy((char *)temp.key, node->key);
+		temp.key = strdup((char *)node->key);
 		temp.data = node->data;
 
 		node->height = node->right->height;
