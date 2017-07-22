@@ -1,4 +1,3 @@
-
 #include "minihttpd.h"
 #include "dictionary.h"
 #include "array-dictionary.h"

@@ -1,9 +1,11 @@
-
-#include <string.h>
-#include "search-engine.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/time.h>
+#include "search-engine.h"
 #include "webcrawl.h"
+
+DictionaryType dictType;
 
 SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   MiniHTTPD(port)
@@ -19,8 +21,16 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	  _wordToURLList = new AVLDictionary();
   else
 	  _wordToURLList = NULL;
+	
+  dictType = dictionaryType;
 
   // Populate dictionary and sort it if necessary
+
+  // URLRecord 
+  URLRecordList ** list = new URLRecordList * [1024];
+  for(int i = 0; i < 1024; i++){
+	  list[i] = new URLRecordList();
+  }
 
 }
 
