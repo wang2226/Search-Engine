@@ -347,8 +347,171 @@ AVLDictionary::removeElement(KeyType key)
 		printNode("", root, 0);
 	}
 
-
 	// Add your implementation here
+	AVLNode * node;
+	node = findNode(key);
+
+	if(node == NULL){	//node to remove is empty
+		return false;
+	}
+		
+	if(node->left == NULL && node->right == NULL){	//node to remove has no children
+		if(node == node->parent->left){	//node to remove is its parent's left child
+			node->parent->left = NULL;
+		} else {	//node to remove is its parent's right child
+			node->parent->right = NULL;
+		}
+
+		//adjust heights of nodes in path
+		//from inserted node to root
+		AVLNode * p;
+		p = node->parent;
+
+		while(p != NULL){	//iterate until root
+			int maxheight = 0;
+
+			if(p->left != NULL){	//check if left exists
+				maxheight = p->left->height;
+			}
+			if(p->right != NULL && p->right->height > maxheight){
+				maxheight = p->right->height;
+			}
+			p->height = maxheight + 1;
+			p = p->parent;	//go to parent to recompute height
+		} //while
+
+		restructure(node->parent);
+		delete node;
+	} else if(node->left == NULL){	//node to remove only has right child
+		//swap node to remove with its right child and delete node
+		AVLNode temp;
+		temp.height = node->height;
+		strcpy((char *)temp.key, node->key);
+		temp.data = node->data;
+
+		node->height = node->right->height;
+		strcpy((char *)node->key, node->right->key);
+		node->data = node->right->data;
+
+		node->right->height = temp.height;
+		strcpy((char *)node->right->key, temp.key);
+		node->right->data = temp.data;
+
+		delete node->right;
+		node->right = NULL;
+
+		//update height
+		AVLNode * p = node->parent;
+		while(p != NULL){
+			int maxheight = 0;
+			if(p->left != NULL){
+				maxheight = p->left->height;
+			}
+			if(p->right != NULL && maxheight < p->right->height){
+				maxheight = p->right->height;
+			}
+			
+			p->height = maxheight + 1;
+			p = p->parent;
+		}	//while
+
+		restructure(node);
+	} else if(node->right == NULL){	//node to remove only has left child
+		//swap node with its left child and delete node
+		AVLNode temp;
+		temp.height = node->height;
+		strcpy((char *)temp.key, node->key);
+		temp.data = node->data;
+
+		node->height = node->left->height;
+		strcpy((char *)node->key, node->left->key);
+		node->data = node->left->data;
+
+		node->left->height = temp.height;
+		strcpy((char *)node->left->key, temp.key);
+		node->left->data = temp.data;
+
+		delete node->left;
+		node->left = NULL;
+
+		//update height
+		AVLNode * p = node->parent;
+		while(p != NULL){
+			int maxheight = 0;
+			if(p->left != NULL){
+				maxheight = p->left->height;
+			}
+			if(p->right != NULL && maxheight < p->right->height){
+				maxheight = p->right->height;
+			}
+			
+			p->height = maxheight + 1;
+			p = p->parent;
+		}	//while
+
+		restructure(node);
+	} else {	//node to remove has both left and right child
+		AVLNode * p;
+		p = node->left;
+
+		if(p->right == NULL){	//obtain successor
+			p = node->right;
+			while(p->left != NULL){
+				p = p->left;
+			}
+		} else {	//obtain predecessor
+			while(p->right != NULL){
+				p = p->right;
+			}
+		}
+		
+		//swap node with either successor or predecessor
+		AVLNode temp;
+		temp.height = node->height;
+		strcpy((char *)temp.key, node->key);
+		temp.data = node->data;
+
+		node->height = p->height;
+		strcpy((char *)node->key, p->key);
+		node->data = p->data;
+
+		p->height = temp.height;
+		strcpy((char *)p->key, temp.key);
+		p->data = temp.data;
+
+		//delete node
+		AVLNode * n;
+		n = p->parent;
+
+		if(n != NULL){
+			if(p == n->left){	//node is on the left side
+				n->left = NULL;
+				delete p;
+			} else {	//node is on the right side
+				n->right = NULL;
+				delete p;
+			}
+
+			//update heights
+			AVLNode * m = n;
+			while(m != NULL){
+				int maxheight = 0;
+				if(m->left != NULL){
+					maxheight = m->left->height;
+				}
+				if(m->right != NULL && maxheight < m->right->height){
+					maxheight = m->right->height;
+				}
+
+				m->height = maxheight + 1;
+				m = m->parent;
+			}	//while
+
+			restructure(n);
+		}
+	}
+
+	nElements--;
 	
 	if (debug) {
 		printf("---------- After -----------------\n");
