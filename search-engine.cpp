@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 #include <sys/time.h>
 #include "search-engine.h"
 #include "webcrawl.h"
@@ -10,28 +11,113 @@ DictionaryType dictType;
 SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   MiniHTTPD(port)
 {
-  // Create dictionary of the indicated type
-  if(dictionaryType == ArrayDictionaryType)
-	  _wordToURLList = new ArrayDictionary();
-  else if(dictionaryType == HashDictionaryType)
-	  _wordToURLList = new HashDictionary();
-  else if(dictionaryType == BinarySearchDictionaryType)
-	  _wordToURLList = new BinarySearchDictionary();
-  else if(dictionaryType == AVLDictionaryType)
-	  _wordToURLList = new AVLDictionary();
-  else
-	  _wordToURLList = NULL;
+  	// Create dictionary of the indicated type
+  	if(dictionaryType == ArrayDictionaryType)
+	  	_wordToURLList = new ArrayDictionary();
+  	else if(dictionaryType == HashDictionaryType)
+	  	_wordToURLList = new HashDictionary();
+  	else if(dictionaryType == BinarySearchDictionaryType)
+	  	_wordToURLList = new BinarySearchDictionary();
+  	else if(dictionaryType == AVLDictionaryType)
+	  	_wordToURLList = new AVLDictionary();
+  	else
+	  	_wordToURLList = NULL;
 	
-  dictType = dictionaryType;
+  	dictType = dictionaryType;
 
-  // Populate dictionary and sort it if necessary
+  	// Populate dictionary and sort it if necessary
 
-  // URLRecord 
-  URLRecordList ** list = new URLRecordList * [1024];
-  for(int i = 0; i < 1024; i++){
-	  list[i] = new URLRecordList();
-  }
+	//read from url.txt
+  	FILE * fp;
+  	fp = fopen("url.txt", "r");
+  	assert(fp != NULL);
+	
+	char * buffer;
+	buffer = new char [1000];
 
+  	URLRecord ** records = new URLRecord * [1024];
+  	for(int i = 0; i < 1024; i++){
+	  	records[i] = new URLRecord();
+  	}
+
+	while(fgets(buffer, 1000, fp)){
+		if(strcmp(buffer, "\n") != 0){
+			//get the index
+			char * token = new char [1000];
+			token = strtok(buffer, " ");
+			int index = atoi(token);
+
+			//get the url
+			token = strtok(NULL, " \n");
+			char * url = new char [1000];
+			strcpy(url, token);
+ 
+			//get the description
+			fgets(buffer, 1000, fp);
+			token = strtok(buffer, "\n");
+			char * description = new char [1000];
+			strcpy(description, token);
+
+			//store this entry
+			records[index]->_url = url;
+			records[index]->_description = description;
+		}
+	} //while
+
+	delete buffer;
+	fclose(fp);
+
+	//read form word.txt
+	fp = fopen("word.txt", "r");
+	assert(fp != NULL);
+
+	buffer = new char [1000];
+
+	while(fgets(buffer, 1000, fp)){
+		if(strcmp(buffer, "\n") != 0){
+			char * token;
+			token = new char [1000];
+			token = strtok(buffer, "\n");
+
+			char * word;
+			word = new char [1000];
+			strcpy(word, token);
+
+			URLRecordList * head;
+			head = NULL;
+			URLRecordList * prev;
+			prev = NULL;
+			
+			token = strtok(NULL, " \n");
+			
+			while(token != NULL){
+				int position = atoi(token);
+
+				if(records[position]->_url == NULL)
+					continue;
+
+				URLRecordList * entry = new URLRecordList();
+
+				if(head == NULL)
+					head = entry;
+
+				entry->_urlRecord = records[position];
+				entry->_next = NULL;
+
+				if(prev != NULL)
+					prev->_next = entry;
+
+				prev = entry;
+				token = strtok(NULL, " \n");
+			}
+			_wordToURLList->addRecord(word, (URLRecordList *)head);
+			delete word;
+			delete token;
+		}
+	}//while
+
+	delete buffer;
+	fclose(fp);
 }
 
 void
