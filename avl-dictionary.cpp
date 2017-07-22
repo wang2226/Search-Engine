@@ -134,6 +134,14 @@ AVLDictionary::restructure(AVLNode * n) {
 		if(z->right != NULL){
 			hright = z->right->height;
 		}
+		
+		//since the height of z may have changed after rotation 
+		//we need to recompute it 
+		if(hleft > hright){
+			z->height = hleft + 1;
+		} else {
+			z->height = hright + 1;
+		}
 
 		int hdiff = hright - hleft;
 		if(hdiff < 0) hdiff = -hdiff;	//obtain absolute val
