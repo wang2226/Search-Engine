@@ -40,7 +40,7 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 		if(strcmp(key,curr->key) == 0){
 			//key found, substitute data
 			curr->data = record;
-			return true;
+			return false;
 		} else if(strcmp(key,curr->key) < 0){
 			curr = curr->left;
 		} else {	//key > curr->key
