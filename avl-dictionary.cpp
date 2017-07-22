@@ -58,9 +58,11 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	n->height = 1;
 
 	//test if tree is empty
-	if(prev == NULL){	//root is NULL
+	if(root == NULL){	//root is NULL
 		//insert n as root node
-		return false;
+		root = n;
+		nElements++;
+		return true;
 	}
 
 	//tree is not empty, prev points to the parent where new node will be inserted 
