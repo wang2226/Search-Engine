@@ -68,10 +68,12 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	fp = fopen("word.txt", "r");
 	assert(fp != NULL);
 
-	URLRecordList * head = NULL;
-	URLRecordList * prev = new URLRecordList();
 	while(fgets(buffer, 10000, fp)){
 		if(strcmp(buffer, "\n") != 0){
+			URLRecordList * head = NULL;
+			URLRecordList * prev = new URLRecordList();
+			URLRecordList * drop = prev;
+
 			char * token = strtok(buffer, " ");
 
 			char * word;
@@ -102,6 +104,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				token = strtok(NULL, " ");
 			}
 			_wordToURLList->addRecord(word, (URLRecordList *)head);
+			delete drop;
 		}
 	}
 
