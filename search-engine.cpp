@@ -208,7 +208,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 
 	URLRecord ** urlList = new URLRecord * [500];
 
-	//add to urlList
+	//add all match url to urlList
 	for(int i = 0; i < nWords; i++){
 		URLRecordList * p;	//map elements in wordList to urlList
 		p = (URLRecordList *)_wordToURLList->findRecord(wordList[i]);
@@ -231,7 +231,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 		}	//while
 	}	//for
 
-	//check if wordList maps urlList
+	//check if are common to all words
 	for(int i = 0; i < nRecords; i++){
 		for(int j = 0; j < nWords; j++){
 			URLRecordList * p;
