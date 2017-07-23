@@ -33,14 +33,14 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	assert(fp != NULL);
 	
 	char * buffer;
-	buffer = new char [1000];
+	buffer = new char [10000];
 
   	URLRecord ** records = new URLRecord * [1024];
   	for(int i = 0; i < 1024; i++){
 	  	records[i] = new URLRecord();
   	}
 
-	while(fgets(buffer, 1000, fp)){
+	while(fgets(buffer, 10000, fp)){
 		if(strcmp(buffer, "\n") != 0){
 			//get the index
 			char * token = strtok(buffer, " ");
@@ -52,7 +52,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			strcpy(url, token);
  
 			//get the description
-			fgets(buffer, 1000, fp);
+			fgets(buffer, 10000, fp);
 			char * description = new char [1000];
 			strcpy(description, buffer);
 
@@ -62,30 +62,21 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		}
 	} //while
 
-	delete buffer;
 	fclose(fp);
 
 	//read form word.txt
 	fp = fopen("word.txt", "r");
 	assert(fp != NULL);
 
-	buffer = new char [1000];
-
-	while(fgets(buffer, 1000, fp)){
+	while(fgets(buffer, 10000, fp)){
 		if(strcmp(buffer, "\n") != 0){
-			char * token;
-			token = strtok(buffer, "\n");
+			char * token = strtok(buffer, " ");
 
 			char * word;
-			word = new char [1000];
+			word = new char [100];
 			strcpy(word, token);
 
-			URLRecordList * head;
-			head = NULL;
-			URLRecordList * prev;
-			prev = NULL;
-			
-			token = strtok(NULL, " \n");
+			token = strtok(NULL, " ");
 			
 			while(token != NULL){
 				int position = atoi(token);
@@ -95,21 +86,14 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 
 				URLRecordList * entry = new URLRecordList();
 
-				if(head == NULL)
-					head = entry;
-
 				entry->_urlRecord = records[position];
 				entry->_next = NULL;
 
-				if(prev != NULL)
-					prev->_next = entry;
-
-				prev = entry;
-				token = strtok(NULL, " \n");
+				token = strtok(NULL, " ");
+				_wordToURLList->addRecord(word, (URLRecordList *)entry);
 			}
-			_wordToURLList->addRecord(word, (URLRecordList *)head);
 		}
-	}//while
+	}
 
 	delete buffer;
 	fclose(fp);
