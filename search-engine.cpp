@@ -162,7 +162,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
     // Send initial form
     fprintf(fout, "<TITLE>CS251 Search</TITLE>\r\n");
 	//
-	fprintf(fout, "<BODY alink=\"green\" vlink=\"#663399\" link=\"black\" background=\"https://news.uns.purdue.edu/images+/+2006/lawson-ext.jep\">\n");
+	fprintf(fout, "<body background=\"https://news.uns.purdue.edu/images/+2006/lawson-ext.jpg\">\n");
     fprintf(fout, "<CENTER><H1><em>Boiler Search</em></H1>\n");
     fprintf(fout, "<H2>\n");
     fprintf(fout, "<FORM ACTION=\"search\">\n");
