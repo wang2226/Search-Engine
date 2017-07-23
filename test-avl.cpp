@@ -12,7 +12,7 @@ main( int argc, char **argv)
 	AVLDictionary * dict= new AVLDictionary();
 
 	//int max = 10000;
-	int max = 4;
+	int max = 2;
 	int i;
 	for ( i = 0; i < max; i++) {
 		char key[20];
