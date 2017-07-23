@@ -1,0 +1,1900 @@
+[master (root-commit) 41691c6] Commit search engine
+ Committer: CS251 Account <cs251@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 18 files changed, 1463 insertions(+)
+ create mode 100644 Makefile
+ create mode 100644 array-dictionary.cpp
+ create mode 100644 array-dictionary.h
+ create mode 100644 avl-dictionary.cpp
+ create mode 100644 avl-dictionary.h
+ create mode 100644 avl-dictionary2.cpp
+ create mode 100644 bsearch-dictionary.cpp
+ create mode 100644 bsearch-dictionary.h
+ create mode 100644 dictionary.h
+ create mode 100644 hash-dictionary.cpp
+ create mode 100644 hash-dictionary.h
+ create mode 100644 minihttpd.cpp
+ create mode 100644 minihttpd.h
+ create mode 100644 search-engine.cpp
+ create mode 100644 search-engine.h
+ create mode 100644 test-avl.cpp
+ create mode 100644 test-dict.cpp
+ create mode 100644 webcrawl.h
+On branch master
+Untracked files:
+	#avl-dictionary2.cpp#
+	.local.git.out
+	Makefile~
+	array-dictionary.o
+	avl-dictionary.cpp~
+	avl-dictionary.h~
+	avl-dictionary.o
+	avl-dictionary2.cpp~
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	lab4-test
+	left
+	minihttpd.cpp~
+	minihttpd.o
+	right
+	search-engine
+	search-engine.cpp~
+	search-engine.o
+	test-avl
+	test-avl.cpp~
+	test-dict
+	test-dict.cpp~
+	testall
+
+nothing added to commit but untracked files present
+[master 4fa1887] Commit search engine
+ Committer: CS251 Account <cs251@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+On branch master
+Untracked files:
+	#avl-dictionary2.cpp#
+	.local.git.out
+	Makefile~
+	array-dictionary.o
+	avl-dictionary.cpp~
+	avl-dictionary.h~
+	avl-dictionary.o
+	avl-dictionary2.cpp~
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	lab4-test
+	left
+	minihttpd.cpp~
+	minihttpd.o
+	right
+	search-engine
+	search-engine.cpp~
+	search-engine.o
+	test-avl
+	test-avl.cpp~
+	test-dict
+	test-dict.cpp~
+	testall
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	#avl-dictionary2.cpp#
+	.local.git.out
+	Makefile~
+	array-dictionary.o
+	avl-dictionary.cpp~
+	avl-dictionary.h~
+	avl-dictionary.o
+	avl-dictionary2.cpp~
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	lab4-test
+	left
+	minihttpd.cpp~
+	minihttpd.o
+	right
+	search-engine
+	search-engine.cpp~
+	search-engine.o
+	test-avl
+	test-avl.cpp~
+	test-dict
+	test-dict.cpp~
+	testall
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	#avl-dictionary2.cpp#
+	.local.git.out
+	Makefile~
+	array-dictionary.o
+	avl-dictionary.cpp~
+	avl-dictionary.h~
+	avl-dictionary.o
+	avl-dictionary2.cpp~
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	lab4-test
+	left
+	minihttpd.cpp~
+	minihttpd.o
+	right
+	search-engine
+	search-engine.cpp~
+	search-engine.o
+	test-avl
+	test-avl.cpp~
+	test-dict
+	test-dict.cpp~
+	testall
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	#avl-dictionary2.cpp#
+	.local.git.out
+	Makefile~
+	array-dictionary.o
+	avl-dictionary.cpp~
+	avl-dictionary.h~
+	avl-dictionary.o
+	avl-dictionary2.cpp~
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	lab4-test
+	left
+	minihttpd.cpp~
+	minihttpd.o
+	right
+	search-engine
+	search-engine.cpp~
+	search-engine.o
+	test-avl
+	test-avl.cpp~
+	test-dict
+	test-dict.cpp~
+	testall
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	#avl-dictionary2.cpp#
+	.local.git.out
+	Makefile~
+	array-dictionary.o
+	avl-dictionary.cpp~
+	avl-dictionary.h~
+	avl-dictionary.o
+	avl-dictionary2.cpp~
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	lab4-test
+	left
+	minihttpd.cpp~
+	minihttpd.o
+	right
+	search-engine
+	search-engine.cpp~
+	search-engine.o
+	test-avl
+	test-avl.cpp~
+	test-dict
+	test-dict.cpp~
+	testall
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.local.git.out
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.local.git.out
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.local.git.out
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+
+nothing added to commit but untracked files present
+[master a426128] Commit search engine
+ Committer: CS251 Account <cs251@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 testall.out
+[master 8afe523] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+[master e8ddcbf] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 78 insertions(+), 5 deletions(-)
+[master 4612be2] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 17 insertions(+)
+[master 03f1bf8] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+[master 450813a] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+[master 66e7581] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 7 insertions(+)
+On branch master
+Untracked files:
+	.bsearch-dictionary.cpp.swp
+	.bsearch-dictionary.h.swp
+	.local.git.out
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+
+nothing added to commit but untracked files present
+[master 7042236] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+[master b452e45] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+[master 1648bb5] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+[master e9c3520] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 10 insertions(+), 9 deletions(-)
+[master d7b3174] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+[master f031213] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+[master 3036a8d] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+[master ee9f0a3] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 27 insertions(+), 1 deletion(-)
+[master ad91724] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+[master 411bdb2] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 11 insertions(+)
+[master 6d3455c] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 22 insertions(+), 1 deletion(-)
+[master 2a35e85] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+[master 6dc5bc0] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+[master d4e7502] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 17 insertions(+)
+[master cc1ec8b] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 57 insertions(+), 1 deletion(-)
+[master aa26d56] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 191 insertions(+), 4 deletions(-)
+[master 1296979] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 24 insertions(+)
+[master 6844e40] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 165 insertions(+), 1 deletion(-)
+[master 0b155d7] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+[master 84d81ad] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+[master 8e29d5c] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+On branch master
+Untracked files:
+	.avl-dictionary.cpp.swp
+	.local.git.out
+	.test-dict.cpp.swp
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	debugging_log/
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+
+nothing added to commit but untracked files present
+[master 8623204] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master f0811d1] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+[master b1ef0a9] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+[master d36812a] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+On branch master
+Untracked files:
+	.avl-dictionary.cpp.swp
+	.local.git.out
+	.test-dict.cpp.swp
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	debugging_log/
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+
+nothing added to commit but untracked files present
+[master 6a9f8ee] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+[master 3a6be09] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+[master 24097b4] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 deletions(-)
+[master fe3e5f5] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+On branch master
+Untracked files:
+	.avl-dictionary.cpp.swp
+	.local.git.out
+	.test-avl.cpp.swp
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	debugging_log/
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+
+nothing added to commit but untracked files present
+[master e851942] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+[master 4257a58] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+[master d695a08] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+[master 1181335] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 13 insertions(+), 2 deletions(-)
+[master 84b6381] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+[master 0e57847] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+[master 08450f9] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 14 insertions(+), 4 deletions(-)
+On branch master
+Untracked files:
+	.local.git.out
+	.search-engine.cpp.swp
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	debugging_log/
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.local.git.out
+	.search-engine.cpp.swp
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	debugging_log/
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+
+nothing added to commit but untracked files present
+[master 81ed036] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 105 insertions(+), 19 deletions(-)
+[master a30f36d] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 3 deletions(-)
+[master 9029767] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 132 insertions(+), 14 deletions(-)
+[master 4e7ee26] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+[master f62d57b] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 deletion(-)
+[master 5a9fe62] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 deletion(-)
+[master da8dcd6] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+[master b7a5a44] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 10 insertions(+), 26 deletions(-)
+[master 73d6de9] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+[master 1d6a7a4] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+[master f1559fe] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+On branch master
+Untracked files:
+	.local.git.out
+	.search-engine.cpp.swp
+	.search-engine.h.swp
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	debugging_log/
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+	url.txt
+	word.txt
+
+nothing added to commit but untracked files present
+[master d3bba9e] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 233fe1f] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[master 33fb122] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+[master 200ab04] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 deletion(-)
+On branch master
+Untracked files:
+	.local.git.out
+	.nfs0000000007f66b250000cffc
+	.search-engine.cpp.swp
+	.search-engine.h.swp
+	.word.txt.swp
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	debugging_log/
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+	url.txt
+	word.txt
+
+nothing added to commit but untracked files present
+[master 48b26c8] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+[master 9fd9d80] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+[master 9105fb7] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 27 insertions(+), 7 deletions(-)
+[master 10e44f6] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 1e048c7] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[master 02c7cfa] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 8dd5dcb] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master e9f76a3] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 0d520fe] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master dd65432] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master a8a6a12] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+[master 029c5b4] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 58c0f3f] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 18 insertions(+), 18 deletions(-)
+[master 45ae046] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master b52c7c5] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 18 insertions(+), 19 deletions(-)
+[master 1e67998] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+[master 871713f] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 17 insertions(+), 11 deletions(-)
+[master d8a9a4a] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+Untracked files:
+	.local.git.out
+	.search-engine.cpp.swp
+	.test-avl.cpp.swp
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	debug
+	debugging_log/
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+	url.txt
+	word.txt
+
+nothing added to commit but untracked files present
+[master f590582] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 5a39032] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 745118c] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master c7cf4eb] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 73b2294] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master c8265d0] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 4df2ca0] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master f68984e] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 0354caf] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[master 6d44368] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 22810c6] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 7c37114] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master c2d12f4] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+[master 802477d] Commit search engine
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 48b4b42] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master ed5f79e] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 14eaa64] Commit search engine
+ Committer: Haoran Wang <wang2226@sslab06.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+Untracked files:
+	.local.git.out
+	.test-avl.cpp.swp
+	array-dictionary.o
+	avl-dictionary.o
+	avl-dictionary2.o
+	bsearch-dictionary.o
+	data
+	debug
+	debugging_log/
+	hash-dictionary.o
+	left
+	minihttpd.o
+	right
+	search-engine
+	search-engine.o
+	test-avl
+	test-dict
+	testall
+	url.txt
+	word.txt
+
+nothing added to commit but untracked files present

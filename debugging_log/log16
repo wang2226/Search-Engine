@@ -1,0 +1,50 @@
+Sun Jul 23 03:09:03 EDT 2017
++bt
+#0  0x00007f47b7d0ad10 in __read_nocancel () from /lib64/libc.so.6
+#1  0x00007f47b7ca2c48 in __GI__IO_file_underflow () from /lib64/libc.so.6
+#2  0x00007f47b7ca3afe in __GI__IO_default_uflow () from /lib64/libc.so.6
+#3  0x00007f47b7c9ed58 in getc () from /lib64/libc.so.6
+#4  0x00000000004026e0 in MiniHTTPD::run (this=0x7ffed87bb150) at minihttpd.cpp:158
+#5  0x0000000000402216 in main (argc=3, argv=0x7ffed87bb258) at search-engine.cpp:319
++list
+273	}
+274	
+275	void
+276	printUsage()
+277	{
+278	  const char * usage =
+279	    "Usage: search-engine port (array | hash | avl | bsearch)\n"
+280	    "  It starts a search engine at this port using the\n"
+281	    "  data structure indicated. Port has to be larger than 1024.\n";
+282	
++n
+Single stepping until exit from function __read_nocancel,
+which has no line number information.
+
+Program received signal SIGINT, Interrupt.
+0x00007f47b7d0ad10 in __read_nocancel () from /lib64/libc.so.6
++help
+List of classes of commands:
+
+aliases -- Aliases of other commands
+breakpoints -- Making program stop at certain points
+data -- Examining data
+files -- Specifying and examining files
+internals -- Maintenance commands
+obscure -- Obscure features
+running -- Running the program
+stack -- Examining the stack
+status -- Status inquiries
+support -- Support facilities
+tracepoints -- Tracing of program execution without stopping the program
+user-defined -- User-defined commands
+
+Type "help" followed by a class name for a list of commands in that class.
+Type "help all" for the list of all commands.
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
++r
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 
+[Inferior 1 (process 6475) exited with code 01]
++q

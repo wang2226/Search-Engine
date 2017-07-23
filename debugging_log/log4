@@ -1,0 +1,442 @@
+Fri Jul 21 22:54:06 EDT 2017
++b avl-dictionary.cpp:343
+Breakpoint 1 at 0x402e05: file avl-dictionary.cpp, line 343.
++run avl test3
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-dict avl test3
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x606010, key=0x403d40 "John") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x606010, key=0x403d40 "John") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+332				p = p->left;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+334				p = p->right;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+332				p = p->left;
++s
+328		while(p != NULL){
++s
+338		return NULL;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x606010, key=0x403d40 "John") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+357			return false;
++s
+526	}
++s
+test3 (dict=0x606010) at test-dict.cpp:105
+105	  assert(!e);
++s
+107	  e = dict->removeElement("Rachael");
++s
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+334				p = p->right;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+387		} else if(node->left == NULL){	//node to remove only has right child
++s
+390			temp.height = node->height;
++s
+391			strcpy((char *)temp.key, node->key);
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff72b1943 in __strcpy_sse2_unaligned () from /lib64/libc.so.6
++bt
+#0  0x00007ffff72b1943 in __strcpy_sse2_unaligned () from /lib64/libc.so.6
+#1  0x0000000000402fbc in AVLDictionary::removeElement (this=0x606010, key=0x403c90 "Rachael")
+    at avl-dictionary.cpp:391
+#2  0x00000000004011b2 in test3 (dict=0x606010) at test-dict.cpp:107
+#3  0x000000000040195d in main (argc=3, argv=0x7fffffffe5c8) at test-dict.cpp:259
++list
+386			delete node;
+387		} else if(node->left == NULL){	//node to remove only has right child
+388			//swap node to remove with its right child and delete node
+389			AVLNode temp;
+390			temp.height = node->height;
+391			strcpy((char *)temp.key, node->key);
+392			temp.data = node->data;
+393	
+394			node->height = node->right->height;
+395			strcpy((char *)node->key, node->right->key);
++list
+396	de->key, node->right->key);
+397			node->data = node->right->data;
+398	
+399			node->right->height = temp.height;
+400			strcpy((char *)node->right->key, temp.key);
+401			node->right->data = temp.data;
+402	
+403			delete node->right;
+404			node->right = NULL;
+405	
++make
++make
++info b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000000402e05 in AVLDictionary::removeElement(char const*) 
+                                                   at avl-dictionary.cpp:343
+	breakpoint already hit 2 times
++run avl test3
+`/u/data/u89/wang2226/cs251/lab3-src/test-dict' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-dict avl test3
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x606010, key=0x403d20 "John") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x606010, key=0x403d20 "John") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+332				p = p->left;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+334				p = p->right;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+332				p = p->left;
++s
+328		while(p != NULL){
++s
+338		return NULL;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x606010, key=0x403d20 "John") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+357			return false;
++s
+526	}
++s
+test3 (dict=0x606010) at test-dict.cpp:105
+105	  assert(!e);
++s
+107	  e = dict->removeElement("Rachael");
++s
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x606010, key=0x403c70 "Rachael") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x606010, key=0x403c70 "Rachael") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+334				p = p->right;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x606010, key=0x403c70 "Rachael") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+387		} else if(node->left == NULL){	//node to remove only has right child
++s
+390			temp.height = node->height;
++s
+391			temp.key = strdup((char *)node->key);
++s
+392			temp.data = node->data;
++s
+394			node->height = node->right->height;
++s
+395			strcpy((char *)node->key, node->right->key);
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff72b1912 in __strcpy_sse2_unaligned () from /lib64/libc.so.6
++make
++run avl test3
+`/u/data/u89/wang2226/cs251/lab3-src/test-dict' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-dict avl test3
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x606010, key=0x403d40 "John") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x606010, key=0x403d40 "John") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+332				p = p->left;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+334				p = p->right;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+332				p = p->left;
++s
+328		while(p != NULL){
++s
+338		return NULL;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x606010, key=0x403d40 "John") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+357			return false;
++s
+526	}
++s
+test3 (dict=0x606010) at test-dict.cpp:105
+105	  assert(!e);
++s
+107	  e = dict->removeElement("Rachael");
++s
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+334				p = p->right;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+387		} else if(node->left == NULL){	//node to remove only has right child
++s
+390			temp.height = node->height;
++s
+391			temp.key = strdup((char *)node->key);
++s
+392			temp.data = node->data;
++s
+394			node->height = node->right->height;
++s
+395			node->key = strdup((char *)node->right->key);
++s
+396			node->data = node->right->data;
++s
+398			node->right->height = temp.height;
++s
+399			node->right->key = strdup((char *)temp.key);
++s
+400			node->right->data = temp.data;
++s
+402			delete node->right;
++s
+403			node->right = NULL;
++s
+406			AVLNode * p = node->parent;
++s
+407			while(p != NULL){
++s
+408				int maxheight = 0;
++s
+409				if(p->left != NULL){
++s
+410					maxheight = p->left->height;
++s
+412				if(p->right != NULL && maxheight < p->right->height){
++s
+416				p->height = maxheight + 1;
++s
+417				p = p->parent;
++s
+407			while(p != NULL){
++s
+420			restructure(node);
++s
+AVLDictionary::restructure (this=0x606010, n=0x606030) at avl-dictionary.cpp:124
+124		AVLNode * z = n->parent;	//z is the root of the unbalanced subtree
++s
+126		while(z != NULL){
++s
+128			int hleft = 0;
++s
+129			if(z->left != NULL){
++s
+130				hleft = z->left->height;
++s
+133			int hright = 0;
++s
+134			if(z->right != NULL){
++s
+135				hright = z->right->height;
++s
+138			int hdiff = hright - hleft;
++s
+139			if(hdiff < 0) hdiff = -hdiff;	//obtain absolute val
++s
+140			if(hdiff <= 1){
++s
+143				z = z->parent;
++s
+144				continue;
++s
+126		while(z != NULL){
++s
+301	}//restructure
++s
+AVLDictionary::removeElement (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:516
+516		nElements--;
++s
+518		if (debug) {
++s
+525		return true;
++s
+526	}
++s
+test3 (dict=0x606010) at test-dict.cpp:108
+108	  assert(e);
++s
+110	  gradev = dict->findRecord("Rachael");
++s
+AVLDictionary::findRecord (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:308
+308		AVLNode * p = root;
++s
+310		while(p != NULL){
++s
+311			if(strcmp(p->key,key) == 0){
++s
+313			} else if(strcmp(p->key,key) > 0){
++s
+316				p = p->right;
++s
+310		while(p != NULL){
++s
+311			if(strcmp(p->key,key) == 0){
++s
+313			} else if(strcmp(p->key,key) > 0){
++s
+314				p = p->left;
++s
+310		while(p != NULL){
++s
+320		return NULL;
++s
+321	}
++s
+test3 (dict=0x606010) at test-dict.cpp:111
+111	  grade = (long)gradev;
++s
+113	  printf("Test3 passed\n");
++s
+114	}
++s
+main (argc=3, argv=0x7fffffffe5c8) at test-dict.cpp:275
+275	  exit(0);
++s
+[Inferior 1 (process 13986) exited normally]
++s
+The program is not being run.
++q

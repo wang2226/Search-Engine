@@ -1,0 +1,104 @@
+Fri Jul 21 22:44:24 EDT 2017
++b avl-dictionary.cpp:343
+Breakpoint 1 at 0x402e05: file avl-dictionary.cpp, line 343.
++run avl test3
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-dict avl test3
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x606010, key=0x403d40 "John") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x606010, key=0x403d40 "John") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+332				p = p->left;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+334				p = p->right;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+332				p = p->left;
++s
+328		while(p != NULL){
++s
+338		return NULL;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x606010, key=0x403d40 "John") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+357			return false;
++s
+526	}
++s
+test3 (dict=0x606010) at test-dict.cpp:105
+105	  assert(!e);
++s
+107	  e = dict->removeElement("Rachael");
++s
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+331			} else if(strcmp(p->key,key) > 0){
++s
+334				p = p->right;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x606010, key=0x403c90 "Rachael") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+387		} else if(node->left == NULL){	//node to remove only has right child
++s
+390			temp.height = node->height;
++s
+391			strcpy((char *)temp.key, node->key);
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff72b1943 in __strcpy_sse2_unaligned () from /lib64/libc.so.6
++s
+Single stepping until exit from function __strcpy_sse2_unaligned,
+which has no line number information.
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++bt
+No stack.
++q

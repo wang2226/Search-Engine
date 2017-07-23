@@ -1,0 +1,125 @@
+Sat Jul 22 23:13:44 EDT 2017
++info b
+No breakpoints or watchpoints.
++b search-engine.cpp:69
+Breakpoint 1 at 0x40170d: file search-engine.cpp, line 69.
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 1, SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:69
+warning: Source file is more recent than executable.
+69		assert(fp != NULL);
++s
+70	
++s
+72			if(strcmp(buffer, "\n") != 0){
++s
+74	
++s
+75				char * word;
++p buffer
+$1 = 0x60a1b0 "please 0 8 12 14 29 30 36 54 56 61 63 66 67 69 102 119 142 144 159 162 175 176 181 189 220 222 225 242 244 261 264 278 298 306 353 356\n"
++p token
+$2 = {<text variable, no debug info>} 0x7ffff731b270 <token>
++make
++run 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 1, SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:69
+69		assert(fp != NULL);
++n
+71		while(fgets(buffer, 10000, fp)){
++n
+72			if(strcmp(buffer, "\n") != 0){
++n
+73				char * token = strtok(buffer, " ");
++p buffer
+$3 = 0x60a1b0 "please 0 8 12 14 29 30 36 54 56 61 63 66 67 69 102 119 142 144 159 162 175 176 181 189 220 222 225 242 244 261 264 278 298 306 353 356\n"
++p token
+$4 = 0x7fffffffe5d8 "\b\351\377\377\377\177"
++p /t *(char*)token
+$5 = 1000
++n
+76				word = new char [100];
++p /t *(char*)token
+$6 = 1110000
++p token
+$7 = 0x60a1b0 "please"
++n
+77				strcpy(word, token);
++p word
+$8 = 0x6cbae0 ""
++n
+79				token = strtok(NULL, " ");
++p word
+$9 = 0x6cbae0 "please"
++n
+81				while(token != NULL){
++p token
+$10 = 0x60a1b7 "0"
++n
+82					int position = atoi(token);
++n
+84					if(records[position]->_url == NULL)
++p position
+$11 = 0
++n
+87					URLRecordList * entry = new URLRecordList();
++p records[poisition]->_url
+No symbol "poisition" in current context.
++p records[0]->_url
+$12 = 0x6168e0 "http://www.gutenberg.net/Hugo/LesMs/0.html\n"
++n
+89					entry->_urlRecord = records[position];
++n
+90					entry->_next = NULL;
++p entry->_urlRecord
+$13 = (URLRecord *) 0x60e8e0
++p *entry->_urlRecord
+$14 = {_url = 0x6168e0 "http://www.gutenberg.net/Hugo/LesMs/0.html\n", 
+  _description = 0x616cd0 "please take a look at the important information in this header we encourage you to keep this file on your own disk keeping an electronic path open for the next readers do not remove this welcome to th"...}
++n
+92					token = strtok(NULL, " ");
++n
+93					_wordToURLList->addRecord(word, (URLRecordList *)entry);
++p token
+$15 = 0x60a1b9 "8"
++n
+81				while(token != NULL){
++p *_wordToURLList
+$16 = {_vptr.Dictionary = 0x405370 <vtable for ArrayDictionary+16>}
++p *_wordToURLList->_urlRecord
+There is no member or method named _urlRecord.
++p *_wordToURLList->word
+There is no member or method named word.
++p _wordToURLList->word
+There is no member or method named word.
++p _wordToURLList->word
+There is no member or method named word.
++p _wordToURLList->key[8]
+There is no member or method named key.
++n
+82					int position = atoi(token);
++n
+84					if(records[position]->_url == NULL)
++p position
+$17 = 8
++n
+87					URLRecordList * entry = new URLRecordList();
++n
+89					entry->_urlRecord = records[position];
++n
+90					entry->_next = NULL;
++p url->_urlRecord
+No symbol "url" in current context.
++p entry->_urlRecord
+$18 = (URLRecord *) 0x60e9e0
++p *entry->_urlRecord
+$19 = {_url = 0x61a7e0 "http://www.gutenberg.net/Hugo/LesMs/8.html\n", 
+  _description = 0x61abd0 "chapter vi who guarded his house for him the house in which he lived consisted as we have said of a ground floor and one story above three rooms on the ground floor three chambers on the first and an "...}
++n
+92					token = strtok(NULL, " ");
++q

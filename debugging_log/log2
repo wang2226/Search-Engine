@@ -1,0 +1,205 @@
+Fri Jul 21 22:36:33 EDT 2017
++b avl-dictionary.cpp:22
+Breakpoint 1 at 0x4024e0: file avl-dictionary.cpp, line 22.
++run avl test1
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-dict avl test1
+
+Breakpoint 1, AVLDictionary::addRecord (this=0x606010, key=0x403c90 "Rachael", record=0x8)
+    at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+35		AVLNode * curr = root;
++s
+36		AVLNode * prev = NULL;
++s
+38		while(curr != NULL){
++s
+52		AVLNode * n = new AVLNode();
++s
+53		n->key = key;
++s
+54		n->data = record;
++s
+55		n->left = NULL;
++s
+56		n->right = NULL;
++s
+57		n->parent = NULL;
++s
+58		n->height = 1;
++s
+61		if(root == NULL){	//root is NULL
++s
+63			root = n;
++s
+64			nElements++;
++s
+65			return true;
++s
+113	}	//insert
++s
+test1 (dict=0x606010) at test-dict.cpp:43
+43	  assert(e);
++s
+45	  e = dict->addRecord("Monica", (void*) 9);
++s
+
+Breakpoint 1, AVLDictionary::addRecord (this=0x606010, key=0x403c98 "Monica", record=0x9)
+    at avl-dictionary.cpp:25
+25		if ( debug) {
++s
+35		AVLNode * curr = root;
++s
+36		AVLNode * prev = NULL;
++s
+38		while(curr != NULL){
++s
+39			prev = curr;
++s
+40			if(strcmp(key,curr->key) == 0){
++s
+44			} else if(strcmp(key,curr->key) < 0){
++s
+45				curr = curr->left;
++s
+38		while(curr != NULL){
++s
+52		AVLNode * n = new AVLNode();
++s
+53		n->key = key;
++s
+54		n->data = record;
++s
+55		n->left = NULL;
++s
+56		n->right = NULL;
++s
+57		n->parent = NULL;
++s
+58		n->height = 1;
++s
+61		if(root == NULL){	//root is NULL
++s
+69		if(strcmp(key,prev->key) < 0){
++s
+71			prev->left = n;
++s
+77		n->parent = prev;
++s
+80		AVLNode * m = n->parent;
++s
+81		while(m != NULL){	//iterate until root
++s
+82			int maxheight = 0;
++s
+83			if(m->left != NULL){	//check if left exists
++s
+84				maxheight = m->left->height;
++s
+86			if(m->right != NULL && m->right->height > maxheight){
++s
+89			m->height = maxheight + 1;
++s
+90			m = m->parent;	//go to the parent to compute height
++s
+81		while(m != NULL){	//iterate until root
++s
+95		if ( debug) {
++s
+101		restructure(n);
++s
+AVLDictionary::restructure (this=0x606010, n=0x606070) at avl-dictionary.cpp:124
+124		AVLNode * z = n->parent;	//z is the root of the unbalanced subtree
++s
+126		while(z != NULL){
++s
+128			int hleft = 0;
++s
+129			if(z->left != NULL){
++s
+130				hleft = z->left->height;
++s
+133			int hright = 0;
++s
+134			if(z->right != NULL){
++s
+138			int hdiff = hright - hleft;
++s
+139			if(hdiff < 0) hdiff = -hdiff;	//obtain absolute val
++s
+140			if(hdiff <= 1){
++s
+143				z = z->parent;
++s
+144				continue;
++s
+126		while(z != NULL){
++s
+301	}//restructure
++s
+AVLDictionary::addRecord (this=0x606010, key=0x403c98 "Monica", record=0x9) at avl-dictionary.cpp:103
+103		if (debug) {
++s
+110		nElements++;
++s
+112		return true;
++s
+113	}	//insert
++s
+test1 (dict=0x606010) at test-dict.cpp:46
+46	  assert(e);
++s
+48	  e = dict->addRecord("Monica", (void *) 10);
++s
+
+Breakpoint 1, AVLDictionary::addRecord (this=0x606010, key=0x403c98 "Monica", record=0xa)
+    at avl-dictionary.cpp:25
+25		if ( debug) {
++s
+35		AVLNode * curr = root;
++s
+36		AVLNode * prev = NULL;
++s
+38		while(curr != NULL){
++s
+39			prev = curr;
++s
+40			if(strcmp(key,curr->key) == 0){
++s
+44			} else if(strcmp(key,curr->key) < 0){
++s
+45				curr = curr->left;
++s
+38		while(curr != NULL){
++s
+39			prev = curr;
++s
+40			if(strcmp(key,curr->key) == 0){
++s
+42				curr->data = record;
++s
+43				return true;
++s
+113	}	//insert
++s
+test1 (dict=0x606010) at test-dict.cpp:49
+49	  assert(!e);
++s
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++bt
+#0  0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
+#1  0x00007ffff724f6fa in abort () from /lib64/libc.so.6
+#2  0x00007ffff724732d in __assert_fail_base () from /lib64/libc.so.6
+#3  0x00007ffff72473e2 in __assert_fail () from /lib64/libc.so.6
+#4  0x0000000000400e3f in test1 (dict=0x606010) at test-dict.cpp:49
+#5  0x0000000000401911 in main (argc=3, argv=0x7fffffffe5c8) at test-dict.cpp:253
++bt
+#0  0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
+#1  0x00007ffff724f6fa in abort () from /lib64/libc.so.6
+#2  0x00007ffff724732d in __assert_fail_base () from /lib64/libc.so.6
+#3  0x00007ffff72473e2 in __assert_fail () from /lib64/libc.so.6
+#4  0x0000000000400e3f in test1 (dict=0x606010) at test-dict.cpp:49
+#5  0x0000000000401911 in main (argc=3, argv=0x7fffffffe5c8) at test-dict.cpp:253
++q

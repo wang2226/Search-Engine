@@ -1,0 +1,50 @@
+Fri Jul 21 23:21:44 EDT 2017
++b avl-dictionary.cpp:343
+Breakpoint 1 at 0x40179e: file avl-dictionary.cpp, line 343.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000401852 in AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0")
+    at avl-dictionary.cpp:361
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++bt
+#0  0x0000000000401852 in AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0")
+    at avl-dictionary.cpp:361
+#1  0x0000000000400cf6 in main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:29
++list
+356		if(node == NULL){	//node to remove is empty
+357			return false;
+358		}
+359			
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
+361			if(node == node->parent->left){	//node to remove is its parent's left child
+362				node->parent->left = NULL;
+363			} else {	//node to remove is its parent's right child
+364				node->parent->right = NULL;
+365			}
++q

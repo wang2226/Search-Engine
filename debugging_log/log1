@@ -1,0 +1,119 @@
+Fri Jul 21 22:29:58 EDT 2017
++run avl test1
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-dict avl test1
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++b avl-dictionary.cpp:22
+Breakpoint 1 at 0x4024e0: file avl-dictionary.cpp, line 22.
++n
+Single stepping until exit from function raise,
+which has no line number information.
+
+Program terminated with signal SIGABRT, Aborted.
+The program no longer exists.
++run avl test1
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-dict avl test1
+
+Breakpoint 1, AVLDictionary::addRecord (this=0x606010, key=0x403c50 "Rachael", record=0x8)
+    at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+35		AVLNode * curr = root;
++n
+36		AVLNode * prev = NULL;
++n
+38		while(curr != NULL){
++s
+52		AVLNode * n = new AVLNode();
++n
+53		n->key = key;
++n
+54		n->data = record;
++n
+55		n->left = NULL;
++n
+56		n->right = NULL;
++n
+57		n->parent = NULL;
++n
+58		n->height = 1;
++n
+61		if(prev == NULL){	//root is NULL
++s
+63			return false;
++s
+111	}	//insert
++s
+test1 (dict=0x606010) at test-dict.cpp:43
+43	  assert(e);
++bt
+#0  test1 (dict=0x606010) at test-dict.cpp:43
+#1  0x0000000000401911 in main (argc=3, argv=0x7fffffffe5c8) at test-dict.cpp:253
++list
+38	void test1(Dictionary * dict)
+39	{
+40	
+41	  bool e;
+42	  e = dict->addRecord("Rachael", (void*) 8);
+43	  assert(e);
+44	  
+45	  e = dict->addRecord("Monica", (void*) 9);
+46	  assert(e);
+47	  
++n
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++n
+Single stepping until exit from function raise,
+which has no line number information.
+
+Program terminated with signal SIGABRT, Aborted.
+The program no longer exists.
++make clean
++make
++b avl-dictionary.cpp:22
+Note: breakpoint 1 also set at pc 0x4024e0.
+Breakpoint 2 at 0x4024e0: file avl-dictionary.cpp, line 22.
++run avl test1
+`/u/data/u89/wang2226/cs251/lab3-src/test-dict' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-dict avl test1
+
+Breakpoint 1, AVLDictionary::addRecord (this=0x606010, key=0x403c50 "Rachael", record=0x8)
+    at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+35		AVLNode * curr = root;
++n
+36		AVLNode * prev = NULL;
++s
+38		while(curr != NULL){
++s
+52		AVLNode * n = new AVLNode();
++s
+53		n->key = key;
++s
+54		n->data = record;
++s
+55		n->left = NULL;
++s
+56		n->right = NULL;
++s
+57		n->parent = NULL;
++s
+58		n->height = 1;
++s
+61		if(prev == NULL){	//root is NULL
++s
+63			return false;
++s
+111	}	//insert
++s
+test1 (dict=0x606010) at test-dict.cpp:43
+43	  assert(e);
++make clean
++make
++b avl-dictionary:22
+No source file named avl-dictionary.
++q

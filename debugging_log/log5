@@ -1,0 +1,24 @@
+Fri Jul 21 23:10:51 EDT 2017
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000401852 in AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0")
+    at avl-dictionary.cpp:361
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++bt
+#0  0x0000000000401852 in AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0")
+    at avl-dictionary.cpp:361
+#1  0x0000000000400cf6 in main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:29
++list
+356		if(node == NULL){	//node to remove is empty
+357			return false;
+358		}
+359			
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
+361			if(node == node->parent->left){	//node to remove is its parent's left child
+362				node->parent->left = NULL;
+363			} else {	//node to remove is its parent's right child
+364				node->parent->right = NULL;
+365			}
++q

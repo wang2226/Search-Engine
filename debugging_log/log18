@@ -1,0 +1,23 @@
+Sun Jul 23 08:57:54 EDT 2017
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++run 8888 avl
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 avl
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++run 8888 bsearch
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 bsearch
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++run 8888 hash
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 hash
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
+Quit
++q

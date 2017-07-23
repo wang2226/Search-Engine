@@ -1,0 +1,37 @@
+Sun Jul 23 09:04:21 EDT 2017
++b search-engine.cpp:159
+Breakpoint 1 at 0x401b3e: file search-engine.cpp, line 159.
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+[Inferior 1 (process 9375) exited with code 01]
++n
+The program is not being run.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 1, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b410, 
+    documentRequested=0x7fffffffe084 "/search?word=header") at search-engine.cpp:159
+159	  if (strcmp(documentRequested, "/")==0) {
++list
+154	SearchEngine::dispatch( FILE * fout, const char * documentRequested)
+155	{
+156		struct timespec start, stop;
+157		double accum;
+158	
+159	  if (strcmp(documentRequested, "/")==0) {
+160	    // Send initial form
+161	    fprintf(fout, "<TITLE>CS251 Search</TITLE>\r\n");
+162	    fprintf(fout, "<CENTER><H1><em>Boiler Search</em></H1>\n");
+163	    fprintf(fout, "<H2>\n");
++n
+182		if(strlen(documentRequested) < 13){	//invalid 
++p documentRequested 
+$1 = 0x7fffffffe084 "/search?word=header"
++n
+187		if( clock_gettime( CLOCK_REALTIME, &start) == -1 ) {
++q

@@ -1,0 +1,13 @@
+Sun Jul 23 13:56:52 EDT 2017
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++n
+Single stepping until exit from function raise,
+which has no line number information.
+
+Program terminated with signal SIGABRT, Aborted.
+The program no longer exists.
++q

@@ -1,0 +1,204 @@
+Sat Jul 22 11:13:35 EDT 2017
++b avl-dictionary.cpp:343
+Breakpoint 1 at 0x40179e: file avl-dictionary.cpp, line 343.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+372			p = node->parent;
++s
+374			while(p != NULL){	//iterate until root
++p p
+$1 = (AVLNode *) 0x0
++s
+387			restructure(node->parent);
++make
++run
+`/u/data/u89/wang2226/cs251/lab3-src/test-avl' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++p p
+No symbol "p" in current context.
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++p node
+$2 = (AVLNode *) 0x604030
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++p node->left
+$3 = (AVLNode *) 0x0
++p node->right
+$4 = (AVLNode *) 0x0
++s
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++p node->parent
+$5 = (AVLNode *) 0x0
++p node->parent->left
+Cannot access memory at address 0x18
++p node->parent->right
+Cannot access memory at address 0x20
++p node
+$6 = (AVLNode *) 0x604030
++p node->parent
+$7 = (AVLNode *) 0x0
++make
++run
+`/u/data/u89/wang2226/cs251/lab3-src/test-avl' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+361			if(node->parent == NULL)
++s
+362				return false;
++s
+528	}
++s
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:23
+23		for ( i = 0; i < max; i++) {
++s
+25			int k = i%79;
++s
+26			if (k%2==0) {
++s
+23		for ( i = 0; i < max; i++) {
++s
+25			int k = i%79;
++s
+26			if (k%2==0) {
++s
+28				sprintf(key, "k%d", k);
++s
+29				dict->removeElement(key);
++s
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k2") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x604010, key=0x7fffffffe4d0 "k2") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k2") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+361			if(node->parent == NULL)
++s
+362				return false;
++s
+528	}
++s
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:23
+23		for ( i = 0; i < max; i++) {
++s
+25			int k = i%79;
++s
+26			if (k%2==0) {
++s
+23		for ( i = 0; i < max; i++) {
++s
+25			int k = i%79;
++s
+26			if (k%2==0) {
++s
+28				sprintf(key, "k%d", k);
++s
+29				dict->removeElement(key);
++s
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k4") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x604010, key=0x7fffffffe4d0 "k4") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k4") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+361			if(node->parent == NULL)
++s
+362				return false;
++s
+528	}
++s
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:23
+23		for ( i = 0; i < max; i++) {
++q

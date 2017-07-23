@@ -1,0 +1,24 @@
+Fri Jul 21 22:29:00 EDT 2017
++run avl test1
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl avl test1
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++bt
+#0  0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
+#1  0x00007ffff724f6fa in abort () from /lib64/libc.so.6
+#2  0x00007ffff724732d in __assert_fail_base () from /lib64/libc.so.6
+#3  0x00007ffff72473e2 in __assert_fail () from /lib64/libc.so.6
+#4  0x0000000000400dbc in main (argc=3, argv=0x7fffffffe5c8) at test-avl.cpp:43
++list
+1	
+2	#include "avl-dictionary.h"
+3	#include <string.h>
+4	#include <stdio.h>
+5	#include <assert.h>
+6	
+7	int
+8	main( int argc, char **argv)
+9	{
+10		printf("-----------------------------------\n");
++q

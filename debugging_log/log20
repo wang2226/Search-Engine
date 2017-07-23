@@ -1,0 +1,573 @@
+Sun Jul 23 10:33:18 EDT 2017
++b avl-dictionary.cpp:351
+Breakpoint 1 at 0x4017c2: file avl-dictionary.cpp, line 351.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:353
+353		if (debug) {
++n
+362		node = findNode(key);
++p node
+$1 = (AVLNode *) 0x18
++n
+364		if(node == NULL){	//node to remove is empty
++n
+368		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++n
+369	if(node->parent == NULL)
++p node->parent
+$2 = (AVLNode *) 0x0
++n
+370		return false;
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:353
+353		if (debug) {
++n
+362		node = findNode(key);
++n
+364		if(node == NULL){	//node to remove is empty
++p node->parent
+$3 = (AVLNode *) 0x0
++info b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004017c2 in AVLDictionary::removeElement(char const*) at avl-dictionary.cpp:351
+	breakpoint already hit 1 time
++delete 1
++b avl-dictionary.cpp:116
+Breakpoint 2 at 0x401182: file avl-dictionary.cpp, line 116.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++info b
+Num     Type           Disp Enb Address            What
+2       breakpoint     keep y   0x0000000000401182 in AVLDictionary::restructure(AVLNode*) at avl-dictionary.cpp:116
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++bt
+#0  0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
+#1  0x00007ffff724f6fa in abort () from /lib64/libc.so.6
+#2  0x00007ffff724732d in __assert_fail_base () from /lib64/libc.so.6
+#3  0x00007ffff72473e2 in __assert_fail () from /lib64/libc.so.6
+#4  0x0000000000400d95 in main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:40
++info b
+Num     Type           Disp Enb Address            What
+2       breakpoint     keep y   0x0000000000401182 in AVLDictionary::restructure(AVLNode*) at avl-dictionary.cpp:116
++d 2
++info b
+No breakpoints or watchpoints.
++b test-avl.cpp:34
+Breakpoint 3 at 0x400d0e: file test-avl.cpp, line 34.
++r
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 3, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:35
+35			int k = i%79;
++p k
+$4 = 32767
++n
+36			sprintf(key, "k%d", k);
++p k
+$5 = 0
++n
+37			void * data = dict->findRecord(key);
++p key
+$6 = "k0", '\000' <repeats 14 times>, "\360\"@"
++n
+38			if (k%2==0) {
++p data
+$7 = (void *) 0x2d
++p (char *)data
+$8 = 0x2d <error: Cannot access memory at address 0x2d>
++p (long)data
+$9 = 45
++n
+40				assert(data==NULL);
++n
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++info b
+Num     Type           Disp Enb Address            What
+3       breakpoint     keep y   0x0000000000400d0e in main(int, char**) at test-avl.cpp:34
+	breakpoint already hit 1 time
++d 3
++b test-avl.cpp:24
+Breakpoint 4 at 0x400c93: file test-avl.cpp, line 24.
++r
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 4, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:25
+25			int k = i%79;
++n
+26			if (k%2==0) {
++p k
+$10 = 0
++n
+28				sprintf(key, "k%d", k);
++n
+29				dict->removeElement(key);
++p key
+$11 = "k0", '\000' <repeats 14 times>, "\360\"@"
++n
+23		for ( i = 0; i < max; i++) {
++n
+
+Breakpoint 4, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:25
+25			int k = i%79;
++n
+26			if (k%2==0) {
++p k
+$12 = 1
++n
+23		for ( i = 0; i < max; i++) {
++n
+
+Breakpoint 4, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:25
+25			int k = i%79;
++n
+26			if (k%2==0) {
++p k
+$13 = 2
++n
+28				sprintf(key, "k%d", k);
++p key
+$14 = "k0", '\000' <repeats 14 times>, "\360\"@"
++n
+29				dict->removeElement(key);
++n
+23		for ( i = 0; i < max; i++) {
++p dict
+$15 = (AVLDictionary *) 0x604010
++p (char *)dict->key
+There is no member or method named key.
++dict->findNode(key)
+Undefined command: "dict->findNode".  Try "help".
++p dict->findNode(key)
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff72ac71e in __strcmp_sse2_unaligned () from /lib64/libc.so.6
+The program being debugged was signaled while in a function called from GDB.
+GDB remains in the frame where the signal was received.
+To change this behavior use "set unwindonsignal on".
+Evaluation of the expression containing the function
+(AVLDictionary::findNode(char const*)) will be abandoned.
+When the function is done executing, GDB will silently stop.
++bt
+#0  0x00007ffff72ac71e in __strcmp_sse2_unaligned () from /lib64/libc.so.6
+#1  0x000000000040175c in AVLDictionary::findNode (this=0x604010, key=0x0) at avl-dictionary.cpp:337
+#2  <function called from gdb>
+#3  main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:23
++bt
+#0  0x00007ffff72ac71e in __strcmp_sse2_unaligned () from /lib64/libc.so.6
+#1  0x000000000040175c in AVLDictionary::findNode (this=0x604010, key=0x0) at avl-dictionary.cpp:337
+#2  <function called from gdb>
+#3  main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:23
++info b
+Num     Type           Disp Enb Address            What
+4       breakpoint     keep y   0x0000000000400c93 in main(int, char**) at test-avl.cpp:24
+	breakpoint already hit 3 times
++d 4
++b test-avl.cpp:28
+Breakpoint 5 at 0x400cbf: file test-avl.cpp, line 28.
++r
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 5, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:28
+28				sprintf(key, "k%d", k);
++n
+29				dict->removeElement(key);
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:353
+353		if (debug) {
++n
+362		node = findNode(key);
++p key
+$16 = (KeyType) 0x7fffffffe4d0 "k0"
++p node
+$17 = (AVLNode *) 0x18
++n
+364		if(node == NULL){	//node to remove is empty
++n
+368		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++p node->parent
+$18 = (AVLNode *) 0x0
++p node->left
+$19 = (AVLNode *) 0x0
++p node->right
+$20 = (AVLNode *) 0x0
++n
+369	if(node->parent == NULL)
++info b
+Num     Type           Disp Enb Address            What
+5       breakpoint     keep y   0x0000000000400cbf in main(int, char**) at test-avl.cpp:28
+	breakpoint already hit 1 time
++d 5
++info b
+No breakpoints or watchpoints.
++b test-avl.cpp:19
+Breakpoint 6 at 0x400c49: file test-avl.cpp, line 19.
++r
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 6, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:19
+19			sprintf(key, "k%ld", k);
++n
+20			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k0", record=0x0) at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+35		AVLNode * curr = root;
++n
+36		AVLNode * prev = NULL;
++n
+38		while(curr != NULL){
++p root
+$21 = (AVLNode *) 0x0
++n
+52		AVLNode * n = new AVLNode();
++n
+53		n->key = key;
++p n
+$22 = (AVLNode *) 0x604030
++n
+54		n->data = record;
++p n->key
+$23 = (KeyType) 0x7fffffffe4d0 "k0"
++p n->data
+$24 = (DataType) 0x0
++n
+55		n->left = NULL;
++p n->data
+$25 = (DataType) 0x0
++n
+56		n->right = NULL;
++n
+57		n->parent = NULL;
++n
+58		n->height = 1;
++n
+61		if(root == NULL){	//root is NULL
++n
+63			root = n;
++n
+64			nElements++;
++n
+65			return true;
++p root->data
+$26 = (DataType) 0x0
++p root->key
+$27 = (KeyType) 0x7fffffffe4d0 "k0"
++p record
+$28 = (DataType) 0x0
++r
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 6, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:19
+19			sprintf(key, "k%ld", k);
++n
+20			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k0", record=0x0) at avl-dictionary.cpp:25
+25		if ( debug) {
++p record
+$29 = (DataType) 0x0
++p (int)record
+$30 = 0
++n
+35		AVLNode * curr = root;
++n
+36		AVLNode * prev = NULL;
++n
+38		while(curr != NULL){
++n
+52		AVLNode * n = new AVLNode();
++n
+53		n->key = key;
++p n
+$31 = (AVLNode *) 0x604030
++n
+54		n->data = record;
++p n->key
+$32 = (KeyType) 0x7fffffffe4d0 "k0"
++n
+55		n->left = NULL;
++p (int)n->data
+$33 = 0
++n
+56		n->right = NULL;
++n
+57		n->parent = NULL;
++n
+58		n->height = 1;
++n
+61		if(root == NULL){	//root is NULL
++n
+63			root = n;
++n
+64			nElements++;
++p root
+$34 = (AVLNode *) 0x604030
++n
+65			return true;
++n
+113	}	//insert
++n
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:16
+16		for ( i = 0; i < max; i++) {
++n
+18			long k = i%79;
++n
+
+Breakpoint 6, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:19
+19			sprintf(key, "k%ld", k);
++n
+20			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k1", record=0x1) at avl-dictionary.cpp:25
+25		if ( debug) {
++P (int)record
+$35 = 1
++n
+35		AVLNode * curr = root;
++n
+36		AVLNode * prev = NULL;
++n
+38		while(curr != NULL){
++n
+39			prev = curr;
++n
+40			if(strcmp(key,curr->key) == 0){
++n
+42				curr->data = record;
++n
+43				return false;
++n
+113	}	//insert
++n
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:16
+16		for ( i = 0; i < max; i++) {
++n
+18			long k = i%79;
++n
+
+Breakpoint 6, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:19
+19			sprintf(key, "k%ld", k);
++n
+20			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k2", record=0x2) at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+35		AVLNode * curr = root;
++n
+36		AVLNode * prev = NULL;
++n
+38		while(curr != NULL){
++n
+39			prev = curr;
++n
+40			if(strcmp(key,curr->key) == 0){
++n
+42				curr->data = record;
++n
+43				return false;
++n
+113	}	//insert
++n
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:16
+16		for ( i = 0; i < max; i++) {
++n
+18			long k = i%79;
++n
+
+Breakpoint 6, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:19
+19			sprintf(key, "k%ld", k);
++n
+20			dict->addRecord(key, (void*) k);
++n
+16		for ( i = 0; i < max; i++) {
++n
+18			long k = i%79;
++n
+
+Breakpoint 6, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:19
+19			sprintf(key, "k%ld", k);
++n
+20			dict->addRecord(key, (void*) k);
++n
+16		for ( i = 0; i < max; i++) {
++c
+Continuing.
+
+Breakpoint 6, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:19
+19			sprintf(key, "k%ld", k);
++n
+20			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k5", record=0x5) at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+35		AVLNode * curr = root;
++n
+36		AVLNode * prev = NULL;
++n
+38		while(curr != NULL){
++n
+39			prev = curr;
++n
+40			if(strcmp(key,curr->key) == 0){
++n
+42				curr->data = record;
++n
+43				return false;
++n
+113	}	//insert
++n
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:16
+16		for ( i = 0; i < max; i++) {
++c
+Continuing.
+
+Breakpoint 6, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:19
+19			sprintf(key, "k%ld", k);
++n
+20			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k6", record=0x6) at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+35		AVLNode * curr = root;
++n
+36		AVLNode * prev = NULL;
++n
+38		while(curr != NULL){
++n
+39			prev = curr;
++n
+40			if(strcmp(key,curr->key) == 0){
++n
+42				curr->data = record;
++n
+43				return false;
++p key
+$36 = (KeyType) 0x7fffffffe4d0 "k6"
++c
+Continuing.
+
+Breakpoint 6, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:19
+19			sprintf(key, "k%ld", k);
++n
+20			dict->addRecord(key, (void*) k);
++info b
+Num     Type           Disp Enb Address            What
+6       breakpoint     keep y   0x0000000000400c49 in main(int, char**) at test-avl.cpp:19
+	breakpoint already hit 8 times
++d 6
++b avl-dictionary.cpp:101
+Breakpoint 7 at 0x4010fc: file avl-dictionary.cpp, line 101.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++n
+Single stepping until exit from function raise,
+which has no line number information.
+
+Program terminated with signal SIGABRT, Aborted.
+The program no longer exists.
++bt
+No stack.
++info b
+Num     Type           Disp Enb Address            What
+7       breakpoint     keep y   0x00000000004010fc in AVLDictionary::addRecord(char const*, void*) at avl-dictionary.cpp:101
++d 7
++b avl-dictionary.cpp:78
+Breakpoint 8 at 0x40104e: file avl-dictionary.cpp, line 78.
++ru
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++info b
+Num     Type           Disp Enb Address            What
+8       breakpoint     keep y   0x000000000040104e in AVLDictionary::addRecord(char const*, void*) at avl-dictionary.cpp:78
++d 8
++b avl-dictionary.cpp:69
+Breakpoint 9 at 0x40100e: file avl-dictionary.cpp, line 69.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++where
+#0  0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
+#1  0x00007ffff724f6fa in abort () from /lib64/libc.so.6
+#2  0x00007ffff724732d in __assert_fail_base () from /lib64/libc.so.6
+#3  0x00007ffff72473e2 in __assert_fail () from /lib64/libc.so.6
+#4  0x0000000000400d95 in main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:40
++info b
+Num     Type           Disp Enb Address            What
+9       breakpoint     keep y   0x000000000040100e in AVLDictionary::addRecord(char const*, void*) at avl-dictionary.cpp:69
++info b
+Num     Type           Disp Enb Address            What
+9       breakpoint     keep y   0x000000000040100e in AVLDictionary::addRecord(char const*, void*) at avl-dictionary.cpp:69
++d 9
++b test-avl.cpp:23
+Breakpoint 10 at 0x400c8a: file test-avl.cpp, line 23.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 10, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:23
+23		for ( i = 0; i < max; i++) {
++n
+25			int k = i%79;
++info b
+Num     Type           Disp Enb Address            What
+10      breakpoint     keep y   0x0000000000400c8a in main(int, char**) at test-avl.cpp:23
+	breakpoint already hit 1 time
++d 10
++info b
+No breakpoints or watchpoints.
++b avl-dictionary.cpp:80
+Breakpoint 11 at 0x40104e: file avl-dictionary.cpp, line 80.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++bt
+#0  0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
+#1  0x00007ffff724f6fa in abort () from /lib64/libc.so.6
+#2  0x00007ffff724732d in __assert_fail_base () from /lib64/libc.so.6
+#3  0x00007ffff72473e2 in __assert_fail () from /lib64/libc.so.6
+#4  0x0000000000400d95 in main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:40
++list
+20			dict->addRecord(key, (void*) k);
+21		}
+22	
+23		for ( i = 0; i < max; i++) {
+24			char key[20];
+25			int k = i%79;
+26			if (k%2==0) {
+27				// Remove even keys
+28				sprintf(key, "k%d", k);
+29				dict->removeElement(key);
++n
+Single stepping until exit from function raise,
+which has no line number information.
+
+Program terminated with signal SIGABRT, Aborted.
+The program no longer exists.
++where
+No stack.
++q

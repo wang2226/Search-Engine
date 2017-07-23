@@ -1,0 +1,330 @@
+Sat Jul 22 22:22:39 EDT 2017
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff729565c in _int_malloc () from /lib64/libc.so.6
++bt
+#0  0x00007ffff729565c in _int_malloc () from /lib64/libc.so.6
+#1  0x00007ffff7296a78 in malloc () from /lib64/libc.so.6
+#2  0x00007ffff7b2a698 in operator new(unsigned long) () from /usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/libstdc++.so.6
+#3  0x00007ffff7b2a759 in operator new[](unsigned long) () from /usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/libstdc++.so.6
+#4  0x000000000040177c in SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:80
+#5  0x00000000004022b6 in main (argc=3, argv=0x7fffffffe5b8) at search-engine.cpp:337
++run
+Program not restarted.
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff729565c in _int_malloc () from /lib64/libc.so.6
++bt
+#0  0x00007ffff729565c in _int_malloc () from /lib64/libc.so.6
+#1  0x00007ffff7296a78 in malloc () from /lib64/libc.so.6
+#2  0x00007ffff7b2a698 in operator new(unsigned long) () from /usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/libstdc++.so.6
+#3  0x00007ffff7b2a759 in operator new[](unsigned long) () from /usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/libstdc++.so.6
+#4  0x000000000040177c in SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:80
+#5  0x00000000004022b6 in main (argc=3, argv=0x7fffffffe5b8) at search-engine.cpp:337
++make
++run 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff729565c in _int_malloc () from /lib64/libc.so.6
++bt
+#0  0x00007ffff729565c in _int_malloc () from /lib64/libc.so.6
+#1  0x00007ffff7296a78 in malloc () from /lib64/libc.so.6
+#2  0x0000000000402d4c in ArrayDictionary::addRecord (this=0x608010, 
+    key=0x7240b0 "directly 0 5 8 20 58 69 81 106 109 114 115 116 122 143 148 188 208 253 308 311 327 341 344 352", record=0x0)
+    at array-dictionary.cpp:49
+#3  0x00000000004018d8 in SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:112
+#4  0x00000000004022e8 in main (argc=3, argv=0x7fffffffe5b8) at search-engine.cpp:339
++b array-dictionary.cpp:49
+Breakpoint 1 at 0x402d26: file array-dictionary.cpp, line 49.
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 1, ArrayDictionary::addRecord (this=0x608010, 
+    key=0x7240b0 "please 0 8 12 14 29 30 36 54 56 61 63 66 67 69 102 119 142 144 159 162 175 176 181 189 220 222 225 242 244 261 264 278 298 306 353 356", record=0x0) at array-dictionary.cpp:49
+49		array[currentNumber].key = (char *)malloc(100 * sizeof(char));
++s
+50		strcpy(array[currentNumber].key,key);
++s
+51		array[currentNumber].data = new DataType;
++p key
+$1 = (KeyType) 0x7240b0 "please 0 8 12 14 29 30 36 54 56 61 63 66 67 69 102 119 142 144 159 162 175 176 181 189 220 222 225 242 244 261 264 278 298 306 353 356"
++p currentNumber
+$2 = 0
++p array[0].key
+$3 = 0x7244a0 "please 0 8 12 14 29 30 36 54 56 61 63 66 67 69 102 119 142 144 159 162 175 176 181 189 220 222 225 242 244 261 264 278 298 306 353 356"
++s
+52		array[currentNumber].data = (DataType *)record;
++s
+53		currentNumber++;
++s
+55		return true;
++s
+56	}
++s
+SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType) at search-engine.cpp:113
+113				delete word;
++c
+Continuing.
+
+Breakpoint 1, ArrayDictionary::addRecord (this=0x608010, 
+    key=0x7240b0 "take 0 2 6 8 9 10 11 12 13 14 15 16 17 18 19 23 25 28 29 34 36 38 39 44 45 47 49 54 55 56 58 59 60 61 63 64 66 67 68 69 70 72 74 79 88 91 93 94 98 99 100 101 102 103 104 106 109 111 115 120 121 124 12"..., record=0x0)
+    at array-dictionary.cpp:49
+49		array[currentNumber].key = (char *)malloc(100 * sizeof(char));
++s
+50		strcpy(array[currentNumber].key,key);
++p currentNumber
+$4 = 1
++s
+51		array[currentNumber].data = new DataType;
++s
+52		array[currentNumber].data = (DataType *)record;
++s
+53		currentNumber++;
++s
+55		return true;
++c
+Continuing.
+
+Breakpoint 1, ArrayDictionary::addRecord (this=0x608010, 
+    key=0x7240b0 "a 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 6"..., record=0x0)
+    at array-dictionary.cpp:49
+49		array[currentNumber].key = (char *)malloc(100 * sizeof(char));
++s
+50		strcpy(array[currentNumber].key,key);
++s
+51		array[currentNumber].data = new DataType;
++s
+52		array[currentNumber].data = (DataType *)record;
++s
+53		currentNumber++;
++s
+55		return true;
++c
+Continuing.
+
+Breakpoint 1, ArrayDictionary::addRecord (this=0x608010, 
+    key=0x7240b0 " 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326"..., record=0x0)
+    at array-dictionary.cpp:49
+49		array[currentNumber].key = (char *)malloc(100 * sizeof(char));
++s
+50		strcpy(array[currentNumber].key,key);
++s
+51		array[currentNumber].data = new DataType;
++s
+52		array[currentNumber].data = (DataType *)record;
++s
+53		currentNumber++;
++s
+55		return true;
++c
+Continuing.
+
+Breakpoint 1, ArrayDictionary::addRecord (this=0x608010, 
+    key=0x7240b0 "look 0 5 6 10 12 17 18 23 28 33 37 38 40 41 54 56 59 61 62 66 69 72 73 88 91 93 96 99 101 102 111 114 117 120 121 125 134 140 148 150 155 175 176 181 187 190 195 196 200 205 206 208 211 213 214 216 22"..., record=0x0)
+    at array-dictionary.cpp:49
+49		array[currentNumber].key = (char *)malloc(100 * sizeof(char));
++s
+50		strcpy(array[currentNumber].key,key);
++s
+51		array[currentNumber].data = new DataType;
++s
+52		array[currentNumber].data = (DataType *)record;
++s
+53		currentNumber++;
++s
+55		return true;
++s
+56	}
++c
+Continuing.
+
+Breakpoint 1, ArrayDictionary::addRecord (this=0x608010, 
+    key=0x7240b0 "at 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 "..., record=0x0)
+    at array-dictionary.cpp:49
+49		array[currentNumber].key = (char *)malloc(100 * sizeof(char));
++p currentNumber
+$5 = 5
++p array[0]
+$6 = {
+  key = 0x7244a0 "please 0 8 12 14 29 30 36 54 56 61 63 66 67 69 102 119 142 144 159 162 175 176 181 189 220 222 225 242 2!", 
+  data = 0x0}
++p array[0].data
+$7 = (void *) 0x0
++make
++run 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 1, ArrayDictionary::addRecord (this=0x608010, 
+    key=0x7240b0 "please 0 8 12 14 29 30 36 54 56 61 63 66 67 69 102 119 142 144 159 162 175 176 181 189 220 222 225 242 244 261 264 278 298 306 353 356", record=0x0) at array-dictionary.cpp:49
+49		array[currentNumber].key = (char *)malloc(100 * sizeof(char));
++s
+50		strcpy(array[currentNumber].key,key);
++s
+51		array[currentNumber].data = new DataType;
++q
+Not confirmed.
++info b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000000402d1a in ArrayDictionary::addRecord(char const*, void*) 
+                                                   at array-dictionary.cpp:49
+	breakpoint already hit 1 time
++delete b1
+warning: bad breakpoint number at or near 'b1'
++delete 1
++info b
+No breakpoints or watchpoints.
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff72b16f2 in __strcpy_sse2_unaligned () from /lib64/libc.so.6
++bt
+#0  0x00007ffff72b16f2 in __strcpy_sse2_unaligned () from /lib64/libc.so.6
+#1  0x0000000000402d6d in ArrayDictionary::addRecord (this=0x608010, 
+    key=0x730b30 "world 0 2 3 6 8 9 10 12 13 14 15 16 19 22 23 27 34 36 38 39 41 44 45 46 50 54 56 59 64 66 70 71 72 74 75 76 81 83 90 94 102 108 120 121 122 123 125 126 133 134 135 139 140 142 146 148 158 159 169 170 "..., record=0x0)
+    at array-dictionary.cpp:50
+#2  0x00000000004018d8 in SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:112
+#3  0x00000000004022dc in main (argc=3, argv=0x7fffffffe5b8) at search-engine.cpp:338
++make
++run
+Program not restarted.
++run 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff72b16f2 in __strcpy_sse2_unaligned () from /lib64/libc.so.6
++bt
+#0  0x00007ffff72b16f2 in __strcpy_sse2_unaligned () from /lib64/libc.so.6
+#1  0x0000000000402d61 in ArrayDictionary::addRecord (this=0x608010, 
+    key=0x730b30 "world 0 2 3 6 8 9 10 12 13 14 15 16 19 22 23 27 34 36 38 39 41 44 45 46 50 54 56 59 64 66 70 71 72 74 75 76 81 83 90 94 102 108 120 121 122 123 125 126 133 134 135 139 140 142 146 148 158 159 169 170 "..., record=0x0)
+    at array-dictionary.cpp:50
+#2  0x00000000004018d8 in SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:112
+#3  0x00000000004022d0 in main (argc=3, argv=0x7fffffffe5b8) at search-engine.cpp:337
++make clean
++make
++info b
+No breakpoints or watchpoints.
++b search-engine.cpp:41
+Breakpoint 2 at 0x4015e9: file search-engine.cpp, line 41.
++info b
+Num     Type           Disp Enb Address            What
+2       breakpoint     keep y   0x00000000004015e9 in SearchEngine::SearchEngine(int, DictionaryType) at search-engine.cpp:41
++run 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 2, SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:43
+43		while(fgets(buffer, 1000, fp)){
++s
+44			if(strcmp(buffer, "\n") != 0){
++p buffer
+$8 = 0x60a1b0 "0 http://www.gutenberg.net/Hugo/LesMs/0.html\n"
++n
+46				char * token = strtok(buffer, " ");
++n
+47				int index = atoi(token);
++p index
+$9 = -163754450
++p token
+$10 = 0x60a1b0 "0"
++n
+50				token = strtok(NULL, " ");
++p index
+$11 = 0
++n
+51				char * url = new char [1000];
++p token
+$12 = 0x60a1b2 "http://www.gutenberg.net/Hugo/LesMs/0.html\n"
++n
+52				strcpy(url, token);
++p url
+$13 = 0x6145b0 ""
++n
+55				fgets(buffer, 1000, fp);
++p url
+$14 = 0x6145b0 "http://www.gutenberg.net/Hugo/LesMs/0.html\n"
++n
+56				char * description = new char [1000];
++p buffer
+$15 = 0x60a1b0 "please take a look at the important information in this header we encourage you to keep this file on your own disk keeping an electronic path open for the next readers do not remove this welcome to th"...
++n
+57				strcpy(description, buffer);
++n
+60				records[index]->_url = url;
++p description
+$16 = 0x6149a0 "please take a look at the important information in this header we encourage you to keep this file on your own disk keeping an electronic path open for the next readers do not remove this welcome to th"...
++n
+61				records[index]->_description = description;
++p records[index]->_url
+$17 = 0x6145b0 "http://www.gutenberg.net/Hugo/LesMs/0.html\n"
++n
+43		while(fgets(buffer, 1000, fp)){
++info b
+Num     Type           Disp Enb Address            What
+2       breakpoint     keep y   0x00000000004015e9 in SearchEngine::SearchEngine(int, DictionaryType) at search-engine.cpp:41
+	breakpoint already hit 1 time
++delete 2
++b search-engine.cpp:71
+Breakpoint 3 at 0x401740: file search-engine.cpp, line 71.
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 3, SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:72
+72	buffer, 10000, fp)){
++s
+74	rcmp(buffer, "\n") != 0){
++n
+75	 * token = strtok(buffer, " ");
++list
+70	 NULL);
+71	
+72		while(fgets(buffer, 10000, fp)){
+73			if(strcmp(buffer, "\n") != 0){
+74				char * token = strtok(buffer, " ");
+75	
+76				char * word;
+77				word = new char [100];
+78				strcpy(word, token);
+79	
++where
+#0  SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType) at search-engine.cpp:75
+#1  0x00000000004022ae in main (argc=3, argv=0x7fffffffe5b8) at search-engine.cpp:335
++p token
+$18 = {<text variable, no debug info>} 0x7ffff731b270 <token>
++p buffer
+$19 = 0x60a1b0 "please 0 8 12 14 29 30 36 54 56 61 63 66 67 69 102 119 142 144 159 162 175 176 181 189 220 222 225 242 244 261 264 278 298 306 353 356\n"
++n
+77			word = new char [100];
++p token
+$20 = 0x400a2b "__libc_start_main"
++q
+Not confirmed.
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 3, SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:72
+72	buffer, 10000, fp)){
++n
+74	rcmp(buffer, "\n") != 0){
++where
+#0  SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType) at search-engine.cpp:74
+#1  0x00000000004022ae in main (argc=3, argv=0x7fffffffe5b8) at search-engine.cpp:335
++p buffer
+$21 = 0x60a1b0 "\230|[\367\377\177"
++q

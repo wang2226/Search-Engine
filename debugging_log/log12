@@ -1,0 +1,19 @@
+Sat Jul 22 22:17:38 EDT 2017
++b search-engine.cpp:41
+Breakpoint 1 at 0x4015c9: file search-engine.cpp, line 41.
++run 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 1, SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:41
+41		while(fgets(buffer, 1000, fp)){
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7283bce in fgets () from /lib64/libc.so.6
++bt
+#0  0x00007ffff7283bce in fgets () from /lib64/libc.so.6
+#1  0x00000000004016ea in SearchEngine::SearchEngine (this=0x7fffffffe4b0, port=8888, dictionaryType=ArrayDictionaryType)
+    at search-engine.cpp:41
+#2  0x00000000004022b6 in main (argc=3, argv=0x7fffffffe5b8) at search-engine.cpp:337
++q

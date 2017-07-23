@@ -1,0 +1,348 @@
+Sun Jul 23 14:30:17 EDT 2017
++b main
+Breakpoint 1 at 0x400bd8: file test-avl.cpp, line 9.
++n
+The program is not being run.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe2c8) at test-avl.cpp:9
+9	{
++n
+10		printf("-----------------------------------\n");
++n
+11		printf("Running test-avl\n");
++n
+12		AVLDictionary * dict= new AVLDictionary();
++n
+15		int max = 2;
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe1b0 "k0", record=0x0) at avl-dictionary.cpp:25
+25		if ( debug) {
++p root->key
+Cannot access memory at address 0x0
++n
+26			printf("------------------------------------\n");
++n
+27			printf("addRecord(\"%s\",%ld)\n",  key, (long) record);
++n
+28			printf("---------- Before -----------------\n");
++n
+29			printNode("", root, 0);
++p root
+$1 = (AVLNode *) 0x0
++n
+35		AVLNode * curr = root;
++p root
+$2 = (AVLNode *) 0x0
++n
+37		AVLNode * prev = NULL;
++p root
+$3 = (AVLNode *) 0x0
++n
+39		while(curr != NULL){
++n
+53		AVLNode * n = new AVLNode();
++n
+54		n->key = key;
++n
+55		n->data = record;
++p n
+$4 = (AVLNode *) 0x604030
++p n
+$5 = (AVLNode *) 0x604030
++p n
+$6 = (AVLNode *) 0x604030
++p n
+$7 = (AVLNode *) 0x604030
++n
+56		n->left = NULL;
++n
+57		n->right = NULL;
++n
+58		n->parent = NULL;
++n
+59		n->height = 1;
++n
+62		if(root == NULL){	//root is NULL
++p root
+$8 = (AVLNode *) 0x0
++n
+64			root = n;
++n
+65			nElements++;
++p root
+$9 = (AVLNode *) 0x604030
++n
+66			return true;
++n
+114	}	//insert
++n
+main (argc=1, argv=0x7fffffffe2c8) at test-avl.cpp:17
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++p i
+$10 = 1
++n
+20			sprintf(key, "k%ld", k);
++p k
+$11 = 1
++n
+21			dict->addRecord(key, (void*) k);
++p key
+$12 = "k1", '\000' <repeats 14 times>, "\360\"@"
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe1b0 "k1", record=0x1) at avl-dictionary.cpp:25
+25		if ( debug) {
++p root->key
+$13 = (KeyType) 0x7fffffffe1b0 "k1"
++n
+26			printf("------------------------------------\n");
++n
+27			printf("addRecord(\"%s\",%ld)\n",  key, (long) record);
++p key
+$14 = (KeyType) 0x7fffffffe1b0 "k1"
++n
+28			printf("---------- Before -----------------\n");
++n
+29			printNode("", root, 0);
++n
+35		AVLNode * curr = root;
++p root
+$15 = (AVLNode *) 0x604030
++p root->key
+$16 = (KeyType) 0x7fffffffe1b0 "k1"
++n
+37		AVLNode * prev = NULL;
++n
+39		while(curr != NULL){
++n
+40			prev = curr;
++n
+41			if(strcmp(key,curr->key) == 0){
++n
+43				curr->data = record;
++n
+44				return false;
++p curr->data
+$17 = (DataType) 0x1
++p root->key
+$18 = (KeyType) 0x7fffffffe1b0 "k1"
++p root->data
+$19 = (DataType) 0x1
++n
+114	}	//insert
++n
+main (argc=1, argv=0x7fffffffe2c8) at test-avl.cpp:17
+17		for ( i = 0; i < max; i++) {
++n
+24		for ( i = 0; i < max; i++) {
++n
+26			int k = i%79;
++n
+27			if (k%2==0) {
++n
+29				sprintf(key, "k%d", k);
++n
+30				dict->removeElement(key);
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe1b0 "k0") at avl-dictionary.cpp:354
+354		if (debug) {
++p root->key
+$20 = (KeyType) 0x7fffffffe1b0 "k0"
++n
+355			printf("------------------------------------\n");
++n
+356			printf("removeElement(\"%s\")\n",  key);
++n
+357			printf("---------- Before -----------------\n");
++n
+358			printNode("", root, 0);
++n
+363		node = findNode(key);
++n
+365		if(node == NULL){	//node to remove is empty
++p node
+$21 = (AVLNode *) 0x604030
++p node->key
+$22 = (KeyType) 0x7fffffffe1b0 "k0"
++n
+369		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++p node->parent
+$23 = (AVLNode *) 0x0
++n
+370	if(node->parent == NULL)
++n
+371		return false;
++n
+538	}
++n
+main (argc=1, argv=0x7fffffffe2c8) at test-avl.cpp:24
+24		for ( i = 0; i < max; i++) {
++n
+26			int k = i%79;
++n
+27			if (k%2==0) {
++n
+24		for ( i = 0; i < max; i++) {
++n
+34		for ( i = 0; i < max; i++) {
++n
+36			int k = i%79;
++n
+37			sprintf(key, "k%d", k);
++n
+38			void * data = dict->findRecord(key);
++s
+AVLDictionary::findRecord (this=0x604010, key=0x7fffffffe1b0 "k0") at avl-dictionary.cpp:317
+317		AVLNode * p = root;
++n
+319		while(p != NULL){
++n
+320			if(strcmp(p->key,key) == 0){
++p root->key
+$24 = (KeyType) 0x7fffffffe1b0 "k0"
++n
+321				return (DataType)p->data;
++n
+330	}
++n
+main (argc=1, argv=0x7fffffffe2c8) at test-avl.cpp:39
+39			if (k%2==0) {
++n
+41				assert(data==NULL);
++p data
+$25 = (void *) 0x1
++n
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe2c8) at test-avl.cpp:9
+9	{
++n
+10		printf("-----------------------------------\n");
++n
+11		printf("Running test-avl\n");
++n
+12		AVLDictionary * dict= new AVLDictionary();
++n
+15		int max = 2;
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++n
+17		for ( i = 0; i < max; i++) {
++n
+24		for ( i = 0; i < max; i++) {
++n
+26			int k = i%79;
++n
+27			if (k%2==0) {
++n
+29				sprintf(key, "k%d", k);
++n
+30				dict->removeElement(key);
++n
+24		for ( i = 0; i < max; i++) {
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe2c8) at test-avl.cpp:9
+9	{
++n
+10		printf("-----------------------------------\n");
++n
+11		printf("Running test-avl\n");
++n
+12		AVLDictionary * dict= new AVLDictionary();
++n
+15		int max = 2;
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++n
+17		for ( i = 0; i < max; i++) {
++n
+24		for ( i = 0; i < max; i++) {
++n
+26			int k = i%79;
++n
+27			if (k%2==0) {
++n
+29				sprintf(key, "k%d", k);
++n
+30				dict->removeElement(key);
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe1b0 "k0") at avl-dictionary.cpp:354
+354		if (debug) {
++p root->key
+$26 = (KeyType) 0x7fffffffe1b0 "k0"
++n
+355			printf("------------------------------------\n");
++n
+356			printf("removeElement(\"%s\")\n",  key);
++n
+357			printf("---------- Before -----------------\n");
++n
+358			printNode("", root, 0);
++n
+363		node = findNode(key);
++n
+365		if(node == NULL){	//node to remove is empty
++p node
+$27 = (AVLNode *) 0x604030
++p node->key
+$28 = (KeyType) 0x7fffffffe1b0 "k0"
++p node->data
+$29 = (DataType) 0x1
++p node->parent
+$30 = (AVLNode *) 0x0
++n
+369		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++p node->left
+$31 = (AVLNode *) 0x0
++p node->right
+$32 = (AVLNode *) 0x0
++n
+370	
++n
+371	t->left){	//node to remove is its parent's left child
++q

@@ -1,0 +1,133 @@
+Sat Jul 22 10:48:43 EDT 2017
++b avl-dictionary.cpp:343
+Breakpoint 1 at 0x40179e: file avl-dictionary.cpp, line 343.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000401852 in AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0")
+    at avl-dictionary.cpp:361
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++s
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++s
+The program is not being run.
++s
+The program is not being run.
++s
+The program is not being run.
++s
+The program is not being run.
++s
+The program is not being run.
++s
+The program is not being run.
++s
+The program is not being run.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++p node->left
+$1 = (AVLNode *) 0x0
++p node->left->key
+Cannot access memory at address 0x0
++p (char *)node->left->key
+Cannot access memory at address 0x0
++p (char *)node->left->key
+Cannot access memory at address 0x0
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:345
+345		if (debug) {
++s
+354		node = findNode(key);
++s
+AVLDictionary::findNode (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:326
+326		AVLNode * p = root;
++s
+328		while(p != NULL){
++s
+329			if(strcmp(p->key,key) == 0){
++s
+330				return p;
++p p->key
+$2 = (KeyType) 0x7fffffffe4d0 "k0"
++p (char *)p->key
+$3 = 0x7fffffffe4d0 "k0"
++s
+339	}
++s
+AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:356
+356		if(node == NULL){	//node to remove is empty
++s
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++p (char *)node->left->key
+Cannot access memory at address 0x0
++p node->left
+$4 = (AVLNode *) 0x0
++p node->right
+$5 = (AVLNode *) 0x0
++s
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++p node->parent->left
+Cannot access memory at address 0x18
++p node->parent->left->key
+Cannot access memory at address 0x18
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000401852 in AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0")
+    at avl-dictionary.cpp:361
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++bt
+#0  0x0000000000401852 in AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0")
+    at avl-dictionary.cpp:361
+#1  0x0000000000400cf6 in main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:29
++q

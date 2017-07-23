@@ -1,0 +1,92 @@
+Sat Jul 22 11:05:12 EDT 2017
++b avl-dictionary.cpp:360
+Breakpoint 1 at 0x401828: file avl-dictionary.cpp, line 360.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:360
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++p node->parent
+$1 = (AVLNode *) 0x0
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000401852 in AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0")
+    at avl-dictionary.cpp:361
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++by
+Undefined command: "by".  Try "help".
++bt
+#0  0x0000000000401852 in AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0")
+    at avl-dictionary.cpp:361
+#1  0x0000000000400cf6 in main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:29
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:360
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+361			if(node == node->parent->left){	//node to remove is its parent's left child
++p node->left
+$2 = (AVLNode *) 0x0
++p node
+$3 = (AVLNode *) 0x604030
++p node->parent
+$4 = (AVLNode *) 0x0
++make
++make
++info b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000000401828 in AVLDictionary::removeElement(char const*) 
+                                                   at avl-dictionary.cpp:360
+	breakpoint already hit 1 time
++run
+`/u/data/u89/wang2226/cs251/lab3-src/test-avl' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:360
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+372			p = node->parent;
++s
+374			while(p != NULL){	//iterate until root
++s
+387			restructure(node->parent);
++s
+AVLDictionary::restructure (this=0x604010, n=0x0) at avl-dictionary.cpp:124
+124		AVLNode * z = n->parent;	//z is the root of the unbalanced subtree
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000401186 in AVLDictionary::restructure (this=0x604010, n=0x0) at avl-dictionary.cpp:124
+124		AVLNode * z = n->parent;	//z is the root of the unbalanced subtree
++s
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, AVLDictionary::removeElement (this=0x604010, key=0x7fffffffe4d0 "k0") at avl-dictionary.cpp:360
+360		if(node->left == NULL && node->right == NULL){	//node to remove has no children
++s
+372			p = node->parent;
++s
+374			while(p != NULL){	//iterate until root
++s
+387			restructure(node->parent);
++s
+AVLDictionary::restructure (this=0x604010, n=0x0) at avl-dictionary.cpp:124
+124		AVLNode * z = n->parent;	//z is the root of the unbalanced subtree
++s
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000401186 in AVLDictionary::restructure (this=0x604010, n=0x0) at avl-dictionary.cpp:124
+124		AVLNode * z = n->parent;	//z is the root of the unbalanced subtree
++s
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++q

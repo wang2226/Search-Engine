@@ -1,0 +1,494 @@
+Sun Jul 23 03:23:30 EDT 2017
++b search-engine.c:183
+No source file named search-engine.c.
++b search-engine.cpp:183
+Breakpoint 1 at 0x401bfd: file search-engine.cpp, line 183.
++r 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 1, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b430, 
+    documentRequested=0x7fffffffe084 "/search?word=purdue") at search-engine.cpp:184
+warning: Source file is more recent than executable.
+184			while((oneWord = nextWord(search)) != NULL){
++s
+SearchEngine::checkFormat (this=0x7fffffffe4b0, docRequested=@0x7fffffffde70: 0x60b660 "/search?word=purdue")
+    at search-engine.cpp:131
+131		if(!(strncasecmp(docRequested, "/search?word=", 13) == 0)){	//format is valid
++n
+135		return false;
++q
+Not confirmed.
++make
++r 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 1, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b430, 
+    documentRequested=0x7fffffffe084 "/search?word=purdue") at search-engine.cpp:183
+183		if(checkFormat(search)){
++s
+SearchEngine::checkFormat (this=0x7fffffffe4b0, docRequested=@0x7fffffffde70: 0x60b660 "/search?word=purdue")
+    at search-engine.cpp:131
+131		if(strncasecmp(docRequested, "/search?word=", 13) == 0){	//format is valid
++n
+132			docRequested += 13;	//skip
++n
+133			return true;
++n
+136	}
++n
+SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b430, documentRequested=0x7fffffffe084 "/search?word=purdue")
+    at search-engine.cpp:184
+184			while((oneWord = nextWord(search)) != NULL){
++n
+185				wordList[nWords++] = strdup(oneWord); 
++p oneWord
+$1 = 0x60ba70 "purdue"
++n
+184			while((oneWord = nextWord(search)) != NULL){
++n
+189	printf("Words to search for: %s\n", oneWord);
++p oneWord
+$2 = 0x0
++n
+191		char * words = (char *)malloc(1000 * sizeof(char));
++n
+192		strcpy(words, "");
++n
+194		for(int i = 0; i < nWords; i++){
++p nWords
+$3 = 1
++n
+195			strcat(words, wordList[i]);
++p words
+$4 = 0x60bb70 ""
++n
+196			strcat(words, " ");
++p words
+$5 = 0x60bb70 "purdue"
++n
+194		for(int i = 0; i < nWords; i++){
++n
+201	  fprintf( fout, "<TITLE>Search Results</TITLE>\r\n");
++n
+202	  fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
++n
+203	  fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words);
++n
+207		nRecords = 0;
++n
+209		URLRecord ** urlList = new URLRecord * [500];
++n
+212		for(int i = 0; i < nWords; i++){
++n
+214			p = (URLRecordList *)_wordToURLList->findRecord(wordList[i]);
++n
+216			while(p != NULL){
++p p
+$6 = (URLRecordList *) 0x0
++n
+212		for(int i = 0; i < nWords; i++){
++n
+235		for(int i = 0; i < nRecords; i++){
++n
+254		int count = 0;
++n
+256		for(int i = 0; i < nRecords; i++){
++n
+267	  fprintf(fout, "<HR><H2>\n");
++n
+268	  fprintf(fout, "<FORM ACTION=\"search\">\n");
++n
+269	  fprintf(fout, "Search:\n");
++n
+270	  fprintf(fout, "<INPUT TYPE=\"text\" NAME=\"word\" MAXLENGTH=\"80\"><P>\n");
++n
+271	  fprintf(fout, "</H2>\n");
++n
+272	  fprintf(fout, "</FORM>\n");
++n
+273	}
++n
+MiniHTTPD::run (this=0x7fffffffe4b0) at minihttpd.cpp:228
+228	    fflush(fout);
++list
+223	
+224	    // Dispatch request
+225	    dispatch( fout, documentRequested );
+226	
+227	    // Flush the output
+228	    fflush(fout);
+229	
+230	    // Close fout first. This will close the file descriptor as well.
+231	    fclose(fout);
+232	    fclose(fin);
++n
+231	    fclose(fout);
++n
+232	    fclose(fin);
++n
+233	  }
++n
+121	    socklen_t alen = sizeof(clientAddress);
++n
+123				     (struct sockaddr *)&clientAddress, &alen);
++c
+Continuing.
+
+Breakpoint 1, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b430, 
+    documentRequested=0x7fffffffe084 "/search?word=purdues") at search-engine.cpp:183
+183		if(checkFormat(search)){
++r
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 1, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b430, 
+    documentRequested=0x7fffffffe084 "/search?word=purdue+university") at search-engine.cpp:183
+183		if(checkFormat(search)){
++n
+184			while((oneWord = nextWord(search)) != NULL){
++n
+185				wordList[nWords++] = strdup(oneWord); 
++p oneWord
+$7 = 0x60ba80 "purdue"
++n
+184			while((oneWord = nextWord(search)) != NULL){
++n
+185				wordList[nWords++] = strdup(oneWord); 
++p
+$8 = 0x60ba80 "purdue"
++p oneWord
+$9 = 0x60bb10 "university"
++n
+184			while((oneWord = nextWord(search)) != NULL){
++n
+189	printf("Words to search for: %s\n", oneWord);
++n
+191		char * words = (char *)malloc(1000 * sizeof(char));
++n
+192		strcpy(words, "");
++n
+194		for(int i = 0; i < nWords; i++){
++n
+195			strcat(words, wordList[i]);
++n
+196			strcat(words, " ");
++n
+194		for(int i = 0; i < nWords; i++){
++p words
+$10 = 0x60bc10 "purdue "
++n
+195			strcat(words, wordList[i]);
++n
+196			strcat(words, " ");
++n
+194		for(int i = 0; i < nWords; i++){
++p words
+$11 = 0x60bc10 "purdue university "
++n
+201	  fprintf( fout, "<TITLE>Search Results</TITLE>\r\n");
++n
+202	  fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
++n
+203	  fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words);
++n
+207		nRecords = 0;
++n
+209		URLRecord ** urlList = new URLRecord * [500];
++n
+212		for(int i = 0; i < nWords; i++){
++n
+214			p = (URLRecordList *)_wordToURLList->findRecord(wordList[i]);
++n
+216			while(p != NULL){
++p p
+$12 = (URLRecordList *) 0x0
++c
+Continuing.
+
+Breakpoint 1, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b430, 
+    documentRequested=0x7fffffffe084 "/search?word=purdue+university") at search-engine.cpp:183
+183		if(checkFormat(search)){
++n
+184			while((oneWord = nextWord(search)) != NULL){
++n
+185				wordList[nWords++] = strdup(oneWord); 
++n
+184			while((oneWord = nextWord(search)) != NULL){
++n
+185				wordList[nWords++] = strdup(oneWord); 
++n
+184			while((oneWord = nextWord(search)) != NULL){
++n
+189	printf("Words to search for: %s\n", oneWord);
++n
+191		char * words = (char *)malloc(1000 * sizeof(char));
++n
+192		strcpy(words, "");
++n
+194		for(int i = 0; i < nWords; i++){
++n
+195			strcat(words, wordList[i]);
++n
+196			strcat(words, " ");
++n
+194		for(int i = 0; i < nWords; i++){
++n
+195			strcat(words, wordList[i]);
++n
+196			strcat(words, " ");
++n
+194		for(int i = 0; i < nWords; i++){
++n
+201	  fprintf( fout, "<TITLE>Search Results</TITLE>\r\n");
++n
+202	  fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
++n
+203	  fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words);
++n
+207		nRecords = 0;
++n
+209		URLRecord ** urlList = new URLRecord * [500];
++n
+212		for(int i = 0; i < nWords; i++){
++n
+214			p = (URLRecordList *)_wordToURLList->findRecord(wordList[i]);
++s
+ArrayDictionary::findRecord (this=0x608010, key=0x60c460 "purdue") at array-dictionary.cpp:63
+63		for(int i = 0; i < currentNumber; i++){
++n
+64			if(strcmp(array[i].key,key) == 0)
++p cuurentNumber
+No symbol "cuurentNumber" in current context.
++p currentNumber
+$13 = 23523
++c
+Continuing.
+
+Breakpoint 1, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b200, 
+    documentRequested=0x7fffffffe084 "/search?word=purdue") at search-engine.cpp:183
+183		if(checkFormat(search)){
++c
+Continuing.
+
+Breakpoint 1, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b200, 
+    documentRequested=0x7fffffffe084 "/search?word=please") at search-engine.cpp:183
+183		if(checkFormat(search)){
++c
+Continuing.
+
+Breakpoint 1, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b200, 
+    documentRequested=0x7fffffffe084 "/search?word=workman") at search-engine.cpp:183
+183		if(checkFormat(search)){
++c
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++info b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000000401be7 in SearchEngine::dispatch(_IO_FILE*, char const*) at search-engine.cpp:183
+	breakpoint already hit 5 times
++delete 1
++make
++r 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++make
++b search-engine.cpp:211
+Breakpoint 2 at 0x401d42: file search-engine.cpp, line 211.
++r 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 2, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b430, 
+    documentRequested=0x7fffffffe084 "/search?word=take+a+look") at search-engine.cpp:211
+211		for(int i = 0; i < nWords; i++){
++p nwords
+No symbol "nwords" in current context.
++p nWords
+$14 = 3
++n
+213			p = (URLRecordList *)_wordToURLList->findRecord(wordList[i]);
++n
+215			while(p != NULL){
++p p
+$15 = (URLRecordList *) 0x6cd720
++n
+216				int duplicate = 0;	//check duplicate
++n
+218				for(int j = 0; j < nRecords; j++){
++p nrecords
+No symbol "nrecords" in current context.
++p nRecords
+$16 = 0
++n
+225				if(duplicate == 0){
++n
+226					urlList[nRecords] = p->_urlRecord;	//add to the list
++p p->_urlRecord
+$17 = (URLRecord *) 0x6116c0
++p *((p->_urlRecord)->_url)
+$18 = 104 'h'
++p *(char*)((p->_urlRecord)->_url)
+$19 = 104 'h'
++p *(char*)((p->_urlRecord)->_url+1)
+$20 = 116 't'
++p /t *(char*)((p->_urlRecord)->_url)
+$21 = 1101000
++p /s *(char*)((p->_urlRecord)->_url)
+$22 = 104 'h'
++p /s *(char**)((p->_urlRecord)->_url)
+$23 = 0x772f2f3a70747468 <error: Cannot access memory at address 0x772f2f3a70747468>
++p /s *(char*)((p->_urlRecord)->_url)
+$24 = 104 'h'
++p /s (char*)((p->_urlRecord)->_url)
+$25 = 0x6cb300 "http://www.gutenberg.net/Hugo/LesMs/367.html\n"
++p nRecords
+$26 = 0
++p urlList[0]
+$27 = (URLRecord *) 0x0
++n
+227					nRecords++;
++p urlList[0]
+$28 = (URLRecord *) 0x6116c0
++p (char*)urlList[0]
+$29 = 0x6116c0 ""
+Quit
+Quit
+Quit
++ls
+Undefined command: "ls".  Try "help".
++i b
+Num     Type           Disp Enb Address            What
+2       breakpoint     keep y   0x0000000000401d42 in SearchEngine::dispatch(_IO_FILE*, char const*) at search-engine.cpp:211
+	breakpoint already hit 1 time
++delete 1
+No breakpoint number 1.
++delete 2
++b search-engine.cpp:232
+Breakpoint 3 at 0x401e2b: file search-engine.cpp, line 232.
++r 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 3, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b430, 
+    documentRequested=0x7fffffffe084 "/search?word=take+a+look") at search-engine.cpp:234
+234		for(int i = 0; i < nRecords; i++){
++p nWords
+$30 = 3
++p nRecords
+$31 = 2
++p urlList[0]
+$32 = (URLRecord *) 0x6116c0
++p urlList[0]->_url
+$33 = 0x6cb300 "http://www.gutenberg.net/Hugo/LesMs/367.html\n"
++p urlList[1]->_url
+$34 = 0x6cab20 "http://www.gutenberg.net/Hugo/LesMs/366.html\n"
++p urlList[3]->_url
+Cannot access memory at address 0x0
++p wordList[0]
+$35 = 0x60baf0 "take"
++p wordList[1]
+$36 = 0x60bb80 "a"
++p wordList[2]
+$37 = 0x60bc10 "look"
++p wordList[2]
+$38 = 0x60bc10 "look"
++i b
+Num     Type           Disp Enb Address            What
+3       breakpoint     keep y   0x0000000000401e2b in SearchEngine::dispatch(_IO_FILE*, char const*) at search-engine.cpp:232
+	breakpoint already hit 1 time
++delete 3
++make
++r 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++i b
+No breakpoints or watchpoints.
++b search-engine.cpp:218
+Breakpoint 4 at 0x401dbe: file search-engine.cpp, line 218.
++r 8888 array
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Breakpoint 4, SearchEngine::dispatch (this=0x7fffffffe4b0, fout=0x60b430, 
+    documentRequested=0x7fffffffe084 "/search?word=header") at search-engine.cpp:218
+218		URLRecord ** urlList = new URLRecord * [500];
++n
+221		for(int i = 0; i < nWords; i++){
++n
+223			p = (URLRecordList *)_wordToURLList->findRecord(wordList[i]);
++p nWords
+$39 = 1
++p wordList[0]
+$40 = 0x60bae0 "header"
++n
+225			while(p != NULL){
++p p->_url
+There is no member named _url.
++p p
+$41 = (URLRecordList *) 0x6cbb70
++p p->_urlRecord
+$42 = (URLRecord *) 0x60e8e0
++p (char*)p->_urlRecord
+$43 = 0x60e8e0 "\340ha"
++p (char*)p->_urlRecord->url
+There is no member named url.
++p (char*)p->_urlRecord->_url
+$44 = 0x6168e0 "http://www.gutenberg.net/Hugo/LesMs/0.html\n"
++p (char*)p->_urlRecord->_description
+$45 = 0x616cd0 "please take a look at the important information in this header we encourage you to keep this file on your own disk keeping an electronic path open for the next readers do not remove this welcome to th"...
++p (char*)p->_next
+$46 = 0x6cbb90 "\340\351`"
++p p->_next
+$47 = (URLRecordList *) 0x6cbb90
++p p->_next->
+A syntax error in expression, near `'.
++p p->_next->_next
+$48 = (URLRecordList *) 0x6cbbb0
++p p->_next->_next->_next
+$49 = (URLRecordList *) 0x6cbbd0
++p (p->_next->_next->_next+100)->_next
+$50 = (URLRecordList *) 0x6cc230
++p (p->_next->_next->_next+200)->_next
+$51 = (URLRecordList *) 0x6cc870
++i b
+Num     Type           Disp Enb Address            What
+4       breakpoint     keep y   0x0000000000401dbe in SearchEngine::dispatch(_IO_FILE*, char const*) at search-engine.cpp:218
+	breakpoint already hit 1 time
++delete 4
++make
++r 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++r 8888 hash
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 hash
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++r 8888 bsearch
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 bsearch
+
+Program received signal SIGTERM, Terminated.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++r 8888 avl
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 avl
+
+Program received signal SIGTERM, Terminated.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++make
++make
++r 8888 array
+`/u/data/u89/wang2226/cs251/lab3-src/search-engine' has changed; re-reading symbols.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/search-engine 8888 array
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7305a60 in __accept_nocancel () from /lib64/libc.so.6
++q

@@ -1,0 +1,242 @@
+Sun Jul 23 12:16:41 EDT 2017
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff724e2a7 in raise () from /lib64/libc.so.6
++b main
+Breakpoint 1 at 0x400bd8: file test-avl.cpp, line 9.
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:9
+9	{
++n
+10		printf("-----------------------------------\n");
++n
+11		printf("Running test-avl\n");
++n
+12		AVLDictionary * dict= new AVLDictionary();
++n
+15		int max = 2;
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k0", record=0x0) at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+26			printf("------------------------------------\n");
++n
+27			printf("addRecord(\"%s\",%ld)\n",  key, (long) record);
++n
+28			printf("---------- Before -----------------\n");
++n
+29			printNode("", root, 0);
++n
+35		AVLNode * curr = root;
++n
+36		AVLNode * prev = NULL;
++n
+38		while(curr != NULL){
++n
+52		AVLNode * n = new AVLNode();
++n
+53		n->key = key;
++p n
+$1 = (AVLNode *) 0x604030
++p n->key
+$2 = (KeyType) 0x0
++n
+54		n->data = record;
++p n->data
+$3 = (DataType) 0x0
++n
+55		n->left = NULL;
++n
+56		n->right = NULL;
++n
+57		n->parent = NULL;
++n
+58		n->height = 1;
++n
+61		if(root == NULL){	//root is NULL
++n
+63			root = n;
++p root
+$4 = (AVLNode *) 0x0
++p n
+$5 = (AVLNode *) 0x604030
++n
+64			nElements++;
++p root
+$6 = (AVLNode *) 0x604030
++n
+65			return true;
++n
+113	}	//insert
++n
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:17
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k1", record=0x1) at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+26			printf("------------------------------------\n");
++n
+27			printf("addRecord(\"%s\",%ld)\n",  key, (long) record);
++n
+28			printf("---------- Before -----------------\n");
++n
+29			printNode("", root, 0);
++n
+35		AVLNode * curr = root;
++p curr
+$7 = (AVLNode *) 0x0
++n
+36		AVLNode * prev = NULL;
++p curr
+$8 = (AVLNode *) 0x604030
++n
+38		while(curr != NULL){
++n
+39			prev = curr;
++n
+40			if(strcmp(key,curr->key) == 0){
++p curr->key
+$9 = (KeyType) 0x7fffffffe4d0 "k1"
++p key
+$10 = (KeyType) 0x7fffffffe4d0 "k1"
++n
+42				curr->data = record;
++n
+43				return false;
++n
+113	}	//insert
++n
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:17
+17		for ( i = 0; i < max; i++) {
++p root
+$11 = 0
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:9
+9	{
++n
+10		printf("-----------------------------------\n");
++n
+11		printf("Running test-avl\n");
++n
+12		AVLDictionary * dict= new AVLDictionary();
++n
+15		int max = 2;
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k0", record=0x0) at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+26			printf("------------------------------------\n");
++n
+27			printf("addRecord(\"%s\",%ld)\n",  key, (long) record);
++n
+28			printf("---------- Before -----------------\n");
++n
+29			printNode("", root, 0);
++n
+35		AVLNode * curr = root;
++p root
+$12 = (AVLNode *) 0x0
++p curr
+$13 = (AVLNode *) 0x7fffffffe4d0
++n
+36		AVLNode * prev = NULL;
++p curr
+$14 = (AVLNode *) 0x0
++n
+38		while(curr != NULL){
++n
+52		AVLNode * n = new AVLNode();
++n
+53		n->key = key;
++p n
+$15 = (AVLNode *) 0x604030
++n
+54		n->data = record;
++p n->key
+$16 = (KeyType) 0x7fffffffe4d0 "k0"
++n
+55		n->left = NULL;
++p n->data
+$17 = (DataType) 0x0
++p (int)n->data
+$18 = 0
++n
+56		n->right = NULL;
++n
+57		n->parent = NULL;
++n
+58		n->height = 1;
++n
+61		if(root == NULL){	//root is NULL
++p root
+$19 = (AVLNode *) 0x0
++n
+63			root = n;
++n
+64			nElements++;
++p root
+$20 = (AVLNode *) 0x604030
++p root->key
+$21 = (KeyType) 0x7fffffffe4d0 "k0"
++p root->data
+$22 = (DataType) 0x0
++p nElements 
+$23 = 0
++n
+65			return true;
++n
+113	}	//insert
++n
+main (argc=1, argv=0x7fffffffe5e8) at test-avl.cpp:17
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe4d0 "k1", record=0x1) at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+26			printf("------------------------------------\n");
++n
+27			printf("addRecord(\"%s\",%ld)\n",  key, (long) record);
++n
+28			printf("---------- Before -----------------\n");
++n
+29			printNode("", root, 0);
++n
+35		AVLNode * curr = root;
++p root->key
+$24 = (KeyType) 0x7fffffffe4d0 "k1"
++q

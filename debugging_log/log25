@@ -1,0 +1,79 @@
+Sun Jul 23 14:23:09 EDT 2017
++b main
+Breakpoint 1 at 0x400bd8: file test-avl.cpp, line 9.
++b
+No default breakpoint address now.
++info b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000000400bd8 in main(int, char**) at test-avl.cpp:9
++run
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe2c8) at test-avl.cpp:9
+9	{
++n
+10		printf("-----------------------------------\n");
++n
+11		printf("Running test-avl\n");
++n
+12		AVLDictionary * dict= new AVLDictionary();
++n
+15		int max = 2;
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe1b0 "k0", record=0x0) at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+36		AVLNode * n = new AVLNode();
++n
+37		n->key = key;
++n
+38		n->data = record;
++n
+39		n->left = NULL;
++n
+40		n->right = NULL;
++n
+41		n->parent = NULL;
++n
+42		n->height = 1;
++n
+45		if(root == NULL){	//root is NULL
++n
+47			root = n;
++n
+48			nElements++;
++p root-.key
+A syntax error in expression, near `.key'.
++p root->key
+$1 = (KeyType) 0x7fffffffe1b0 "k0"
++n
+49			return true;
++n
+115	}	//insert
++n
+main (argc=1, argv=0x7fffffffe2c8) at test-avl.cpp:17
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe1b0 "k1", record=0x1) at avl-dictionary.cpp:25
+25		if ( debug) {
++p root->key
+$2 = (KeyType) 0x7fffffffe1b0 "k1"
++n
+36		AVLNode * n = new AVLNode();
++p root->key
+$3 = (KeyType) 0x7fffffffe1b0 "k1"
++q
