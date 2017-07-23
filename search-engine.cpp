@@ -43,20 +43,18 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	while(fgets(buffer, 1000, fp)){
 		if(strcmp(buffer, "\n") != 0){
 			//get the index
-			char * token = new char [1000];
-			token = strtok(buffer, " ");
+			char * token = strtok(buffer, " ");
 			int index = atoi(token);
 
 			//get the url
-			token = strtok(NULL, " \n");
+			token = strtok(NULL, " ");
 			char * url = new char [1000];
 			strcpy(url, token);
  
 			//get the description
 			fgets(buffer, 1000, fp);
-			token = strtok(buffer, "\n");
 			char * description = new char [1000];
-			strcpy(description, token);
+			strcpy(description, buffer);
 
 			//store this entry
 			records[index]->_url = url;
