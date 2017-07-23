@@ -11,7 +11,8 @@ main( int argc, char **argv)
 	printf("Running test-avl\n");
 	AVLDictionary * dict= new AVLDictionary();
 
-	int max = 10000;
+	//int max = 10000;
+	int max = 10;
 	int i;
 	for ( i = 0; i < max; i++) {
 		char key[20];
