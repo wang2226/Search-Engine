@@ -3,10 +3,12 @@
 #include <string.h>
 #include <assert.h>
 #include <sys/time.h>
+#include <time.h>
 #include "search-engine.h"
 #include "webcrawl.h"
 
 DictionaryType dictType;
+char usedDictType[20];
 
 SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
   MiniHTTPD(port)
@@ -151,6 +153,9 @@ SearchEngine::checkFormat(char * &docRequested){
 void
 SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 {
+	struct timespec start, stop;
+	double accum;
+
   if (strcmp(documentRequested, "/")==0) {
     // Send initial form
     fprintf(fout, "<TITLE>CS251 Search</TITLE>\r\n");
@@ -176,6 +181,11 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   
 	if(strlen(documentRequested) < 13){	//invalid 
 		return;
+	}
+	//
+	//get start time
+	if( clock_gettime( CLOCK_REALTIME, &start) == -1 ) {
+		exit( EXIT_FAILURE );
 	}
 
 	//prepare documentRequested
@@ -274,14 +284,22 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 
 		count++;
 	}
+	//get stop time
+	if( clock_gettime( CLOCK_REALTIME, &stop) == -1 ) {
+		exit( EXIT_FAILURE );
+	}
 
-  // Add search form at the end
-  fprintf(fout, "<HR><H2>\n");
-  fprintf(fout, "<FORM ACTION=\"search\">\n");
-  fprintf(fout, "Search:\n");
-  fprintf(fout, "<INPUT TYPE=\"text\" NAME=\"word\" MAXLENGTH=\"80\"><P>\n");
-  fprintf(fout, "</H2>\n");
-  fprintf(fout, "</FORM>\n");
+	accum = 1000000000*( stop.tv_sec - start.tv_sec ) + ( stop.tv_nsec - start.tv_nsec );
+
+	// Add search form at the end
+	fprintf(fout, "<HR><H2>\n");
+	fprintf(fout, "<FORM ACTION=\"search\">\n");
+	fprintf(fout, "Search:\n");
+	fprintf(fout, "<INPUT TYPE=\"text\" NAME=\"word\" MAXLENGTH=\"80\"><P>\n");
+	fprintf(fout, "<blockquote>Dictionary Type:%s<p></blockquote>\n", usedDictType);
+	fprintf(fout, "<blockquote>Search Used:%ld nanoseconds<p></blockquote>\n", (long)accum);
+	fprintf(fout, "</H2>\n");
+	fprintf(fout, "</FORM>\n");
 }
 
 void
@@ -308,6 +326,8 @@ int main(int argc, char ** argv)
 
   // Get DictionaryType
   const char * dictType = argv[2];
+  strcpy(usedDictType, dictType);
+
   DictionaryType dictionaryType;
   if (!strcmp(dictType, "array")) {
     dictionaryType = ArrayDictionaryType;
