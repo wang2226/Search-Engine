@@ -186,7 +186,6 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 		}
 	}
 
-printf("Words to search for: %s\n", oneWord);
 	//print out a string with words to search
 	char * words = (char *)malloc(1000 * sizeof(char));
 	strcpy(words, "");
