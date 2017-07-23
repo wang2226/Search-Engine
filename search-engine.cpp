@@ -128,7 +128,7 @@ SearchEngine::nextWord(char * &buffer){
 
 bool
 SearchEngine::checkFormat(char * &docRequested){
-	if(!(strncasecmp(docRequested, "/search?word=", 13) == 0)){	//format is valid
+	if(strncasecmp(docRequested, "/search?word=", 13) == 0){	//format is valid
 		docRequested += 13;	//skip
 		return true;
 	}
@@ -169,7 +169,6 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	char * search = (char *)malloc((strlen(documentRequested)+1) * sizeof(char));
 	strcpy(search, documentRequested);
 
-printf("Words to search for: %s\n", search);
 
 	//words to search
 	char ** wordList = new char * [1000];
@@ -187,6 +186,7 @@ printf("Words to search for: %s\n", search);
 		}
 	}
 
+printf("Words to search for: %s\n", oneWord);
 	//print out a string with words to search
 	char * words = (char *)malloc(1000 * sizeof(char));
 	strcpy(words, "");
@@ -197,7 +197,6 @@ printf("Words to search for: %s\n", search);
 	}
 
 
-  fprintf( stderr, "Search for words: \"%s\"\n", words);
 
   fprintf( fout, "<TITLE>Search Results</TITLE>\r\n");
   fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
