@@ -31,6 +31,24 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	
 	// Add your implementation here
 
+
+	//Node does not exist. Create it.
+	AVLNode * n = new AVLNode();
+	n->key = key;
+	n->data = record;
+	n->left = NULL;
+	n->right = NULL;
+	n->parent = NULL;
+	n->height = 1;
+
+	//test if tree is empty
+	if(root == NULL){	//root is NULL
+		//insert n as root node
+		root = n;
+		nElements++;
+		return true;
+	}
+
 	//Find node to insert into 
 	AVLNode * curr = root;
 
@@ -48,24 +66,6 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 			curr = curr->right;
 		}
 	} //while
-
-	//Node does not exist. Create it.
-	AVLNode * n = new AVLNode();
-	n->key = key;
-	n->data = record;
-	n->left = NULL;
-	n->right = NULL;
-	n->parent = NULL;
-	n->height = 1;
-
-	//test if tree is empty
-//if(root == NULL){	//root is NULL
-if(prev == NULL){
-		//insert n as root node
-		root = n;
-		nElements++;
-		return false;
-	}
 
 	//tree is not empty, prev points to the parent where new node will be inserted 
 	if(strcmp(key,prev->key) < 0){
