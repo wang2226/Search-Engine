@@ -110,7 +110,6 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 				token = strtok(NULL, " \n");
 			}
 			_wordToURLList->addRecord(word, (URLRecordList *)head);
-			delete word;
 			delete token;
 		}
 	}//while
