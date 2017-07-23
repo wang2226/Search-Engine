@@ -161,7 +161,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 
   // Here the URLs printed are hardwired
   
-  const int nurls=2;
+const int nurls=2;
 
 	if(strlen(documentRequested) < 13){	//invalid 
 		return;
@@ -172,13 +172,13 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	strcpy(search, documentRequested);
 
 	//words to search
-	char ** wordList = new char * [100];
-	for(int i = 0; i < 100; i++){
+	char ** wordList = new char * [1000];
+	for(int i = 0; i < 1000; i++){
 		wordList[i] = NULL;
 	}
 
 	int nWords = 0;	//# of words in documentRequested
-	char * buffer = (char *)malloc(100 * sizeof(char));
+	char * buffer = (char *)malloc(1000 * sizeof(char));
 
 	//add words to wordList[]
 	if(checkFormat(search)){
@@ -188,7 +188,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	}
 
 	//print out a string with words to search
-	char * words = (char *)malloc(100 * sizeof(char));
+	char * words = (char *)malloc(1000 * sizeof(char));
 	strcpy(words, "");
 
 	for(int i = 0; i < nWords; i++){
@@ -202,7 +202,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 
   fprintf( fout, "<TITLE>Search Results</TITLE>\r\n");
   fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
-  fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words );
+  fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words);
 
   	//number of urlRecords in urlList
   	int nRecords;
