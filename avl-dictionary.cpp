@@ -9,7 +9,7 @@
 
 #include "avl-dictionary.h"
 
-bool debug = false;
+bool debug = true;
 
 // Constructor
 AVLDictionary::AVLDictionary()
