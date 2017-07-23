@@ -105,7 +105,7 @@ SearchEngine::nextWord(char * &buffer){
 	char * word = (char *)malloc(100 * sizeof(char));
 
 	int i = 0;	//# of valid chars in word
-	while(*buffer = '\0'){
+	while(*buffer != '\0'){
 		if(*buffer == ' ' || *buffer == '\n' || *buffer == '+'){	//invalid char
 			if(i == 0){	//first char in word is invalid
 				buffer++;	//skip invalid chars
@@ -128,7 +128,7 @@ SearchEngine::nextWord(char * &buffer){
 
 bool
 SearchEngine::checkFormat(char * &docRequested){
-	if(!(strncmp(docRequested, "/search?word=", 13) == 0)){	//format is valid
+	if(!(strncasecmp(docRequested, "/search?word=", 13) == 0)){	//format is valid
 		docRequested += 13;	//skip
 		return true;
 	}
@@ -161,8 +161,6 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 
   // Here the URLs printed are hardwired
   
-const int nurls=2;
-
 	if(strlen(documentRequested) < 13){	//invalid 
 		return;
 	}
@@ -178,12 +176,12 @@ const int nurls=2;
 	}
 
 	int nWords = 0;	//# of words in documentRequested
-	char * buffer = (char *)malloc(1000 * sizeof(char));
+	char * oneWord = (char *)malloc(1000 * sizeof(char));
 
 	//add words to wordList[]
 	if(checkFormat(search)){
-		while((buffer = nextWord(search)) != NULL){
-			wordList[nWords++] = strdup(buffer); 
+		while((oneWord = nextWord(search)) != NULL){
+			wordList[nWords++] = strdup(oneWord); 
 		}
 	}
 
