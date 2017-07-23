@@ -33,6 +33,7 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 
 	//Find node to insert into 
 	AVLNode * curr = root;
+
 	AVLNode * prev = NULL;
 	
 	while(curr != NULL){
@@ -58,7 +59,8 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	n->height = 1;
 
 	//test if tree is empty
-	if(root == NULL){	//root is NULL
+//if(root == NULL){	//root is NULL
+if(prev == NULL){
 		//insert n as root node
 		root = n;
 		nElements++;
