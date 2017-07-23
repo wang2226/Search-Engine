@@ -68,6 +68,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	fp = fopen("word.txt", "r");
 	assert(fp != NULL);
 
+	URLRecordList * head = NULL;
+	URLRecordList * prev = new URLRecordList();
 	while(fgets(buffer, 10000, fp)){
 		if(strcmp(buffer, "\n") != 0){
 			char * token = strtok(buffer, " ");
@@ -88,10 +90,18 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 
 				entry->_urlRecord = records[position];
 				entry->_next = NULL;
+				//build list
+				if (head == NULL) 
+					head = entry;
+
+				if (prev != NULL) 
+					prev->_next = entry;
+
+				prev = entry;
 
 				token = strtok(NULL, " ");
-				_wordToURLList->addRecord(word, (URLRecordList *)entry);
 			}
+			_wordToURLList->addRecord(word, (URLRecordList *)head);
 		}
 	}
 
