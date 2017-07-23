@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 #include <sys/time.h>
 #include "search-engine.h"
 #include "webcrawl.h"
@@ -29,6 +30,7 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	//read from url.txt
   	FILE * fp;
   	fp = fopen("url.txt", "r");
+	assert(fp != NULL);
 	
 	char * buffer;
 	buffer = new char [1000];
@@ -67,13 +69,13 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 
 	//read form word.txt
 	fp = fopen("word.txt", "r");
+	assert(fp != NULL);
 
 	buffer = new char [1000];
 
 	while(fgets(buffer, 1000, fp)){
 		if(strcmp(buffer, "\n") != 0){
 			char * token;
-			token = new char [1000];
 			token = strtok(buffer, "\n");
 
 			char * word;
