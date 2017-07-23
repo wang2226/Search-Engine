@@ -42,8 +42,8 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	  	records[i] = new URLRecord();
   	}
 
-	while(fgets(buffer, 10000, fp)){
-		if(strcmp(buffer, "\n") != 0){
+	while(fgets(buffer, 10000, fp)){	//read every line until the end
+		if(strcmp(buffer, "\n") != 0){	//skip empty lines
 			//get the index
 			char * token = strtok(buffer, " ");
 			int index = atoi(token);
@@ -74,8 +74,9 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 		if(strcmp(buffer, "\n") != 0){
 			URLRecordList * head = NULL;
 			URLRecordList * prev = new URLRecordList();
-			URLRecordList * drop = prev;
+			URLRecordList * drop = prev;	// drop points to prev
 
+			//get word
 			char * token = strtok(buffer, " ");
 
 			char * word;
@@ -85,27 +86,28 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 			token = strtok(NULL, " ");
 			
 			while(token != NULL){
-				int position = atoi(token);
+				int position = atoi(token);	//get positions
 
-				if(records[position]->_url == NULL)
+				if(records[position]->_url == NULL)	//the url mapped to the word is empty
 					continue;
 
+				//new entry
 				URLRecordList * entry = new URLRecordList();
-
 				entry->_urlRecord = records[position];
 				entry->_next = NULL;
+
 				//build list
 				if (head == NULL) 
-					head = entry;
+					head = entry;	// head points to first entry
 
 				if (prev != NULL) 
-					prev->_next = entry;
+					prev->_next = entry;	//prev->_next poits to the new entry just added 
 
-				prev = entry;
+				prev = entry;	//update prev
 
 				token = strtok(NULL, " ");
 			}
-			_wordToURLList->addRecord(word, (URLRecordList *)head);
+			_wordToURLList->addRecord(word, (URLRecordList *)head);	//add word to url list
 			delete drop;
 		}
 	}
@@ -159,6 +161,8 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   if (strcmp(documentRequested, "/")==0) {
     // Send initial form
     fprintf(fout, "<TITLE>CS251 Search</TITLE>\r\n");
+	//
+	fprintf(fout, "<BODY alink=\"green\" vlink=\"#663399\" link=\"black\" background=\"https://news.uns.purdue.edu/images/%2B2005/ranking05-purdue.jpg\">\n");
     fprintf(fout, "<CENTER><H1><em>Boiler Search</em></H1>\n");
     fprintf(fout, "<H2>\n");
     fprintf(fout, "<FORM ACTION=\"search\">\n");
@@ -182,7 +186,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	if(strlen(documentRequested) < 13){	//invalid 
 		return;
 	}
-	//
+	
 	//get start time
 	if( clock_gettime( CLOCK_REALTIME, &start) == -1 ) {
 		exit( EXIT_FAILURE );
@@ -284,6 +288,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 
 		count++;
 	}
+
 	//get stop time
 	if( clock_gettime( CLOCK_REALTIME, &stop) == -1 ) {
 		exit( EXIT_FAILURE );
