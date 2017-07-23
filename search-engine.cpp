@@ -169,6 +169,8 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 	char * search = (char *)malloc((strlen(documentRequested)+1) * sizeof(char));
 	strcpy(search, documentRequested);
 
+printf("Words to search for: %s\n", search);
+
 	//words to search
 	char ** wordList = new char * [1000];
 	for(int i = 0; i < 1000; i++){
@@ -193,7 +195,6 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 		strcat(words, wordList[i]);
 		strcat(words, " ");
 	}
-	printf("Words to search for: %s\n", words);
 
 
   fprintf( stderr, "Search for words: \"%s\"\n", words);
