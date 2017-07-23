@@ -161,7 +161,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   if (strcmp(documentRequested, "/")==0) {
     // Send initial form
     fprintf(fout, "<TITLE>CS251 Search</TITLE>\r\n");
-	//
+	//background
 	fprintf(fout, "<BODY background=\"https://news.uns.purdue.edu/images/cs.render.jpeg\"style=\"background-attachment: fixed; background-repeat:no-repeat; background-cover:cover\">\n");
     fprintf(fout, "<CENTER><H1><em>Boiler Search</em></H1>\n");
     fprintf(fout, "<H2>\n");
@@ -225,6 +225,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 
 
   fprintf( fout, "<TITLE>Search Results</TITLE>\r\n");
+  fprintf(fout, "<BODY background=\"https://news.uns.purdue.edu/images/cs.render.jpeg\"style=\"background-attachment: fixed; background-repeat:no-repeat; background-cover:cover\">\n");
   fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
   fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words);
 
