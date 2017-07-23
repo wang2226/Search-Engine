@@ -22,6 +22,9 @@ class SearchEngine : public MiniHTTPD {
   // Constructor for SearchEngine
   SearchEngine( int port, DictionaryType dictionaryType);
 
+  char * nextWord(char * &buffer);
+  bool checkFormat(char * &docRequested);
+  
   // Called when a request arrives
   void dispatch( FILE * out, const char * requestLine );
 

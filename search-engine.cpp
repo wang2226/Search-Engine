@@ -117,6 +117,42 @@ SearchEngine::SearchEngine( int port, DictionaryType dictionaryType):
 	fclose(fp);
 }
 
+//break down to words
+char *
+SearchEngine::nextWord(char * &buffer){
+	char * word = (char *)malloc(100 * sizeof(char));
+
+	int i = 0;	//# of valid chars in word
+	while(*buffer = '\0'){
+		if(*buffer == ' ' || *buffer == '\n' || *buffer == '+'){	//invalid char
+			if(i == 0){	//first char in word is invalid
+				buffer++;	//skip invalid chars
+				continue;
+			} else {	//end of the word
+				word[i] = '\0';
+				return word;
+			}
+		} else {	//*buffer is valid char
+			word[i++] = *buffer;	//add to word
+			buffer++;
+		}
+	}	//while
+	if(i > 0){	//check again
+		word[i] = '\0';
+		return word;
+	}
+	return NULL;
+}
+
+bool
+SearchEngine::checkFormat(char * &docRequested){
+	if(!(strncmp(docRequested, "/search?word=", 13) == 0)){	//format is valid
+		docRequested += 13;	//skip
+		return true;
+	}
+	return false;
+}
+
 void
 SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 {
@@ -145,17 +181,40 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   
   const int nurls=2;
 
-  const char * words = "data structures";
+	if(strlen(documentRequested) < 13){	//invalid 
+		return;
+	}
 
-  const char * urls[] = {
-    "http://www.cs.purdue.edu",
-    "http://www.cs.purdue.edu/homes/cs251"
-  };
-  
-  const char * description[] = {
-    "Computer Science Department. Purdue University.",
-    "CS251 Data Structures"
-  };
+	//prepare documentRequested
+	char * search = (char *)malloc((strlen(documentRequested)+1) * sizeof(char));
+	strcpy(search, documentRequested);
+
+	//words to search
+	char ** wordList = new char * [100];
+	for(int i = 0; i < 100; i++){
+		wordList[i] = NULL;
+	}
+
+	int nWords = 0;	//# of words in documentRequested
+	char * buffer = (char *)malloc(100 * sizeof(char));
+
+	//add words to wordList[]
+	if(checkFormat(search)){
+		while((buffer = nextWord(search)) != NULL){
+			wordList[nWords++] = strdup(buffer); 
+		}
+	}
+
+	//print out a string with words to search
+	char * words = (char *)malloc(100 * sizeof(char));
+	strcpy(words, "");
+
+	for(int i = 0; i < nWords; i++){
+		strcat(words, wordList[i]);
+		strcat(words, " ");
+	}
+	printf("Words to search for: %s\n", words);
+
 
   fprintf( stderr, "Search for words: \"%s\"\n", words);
 
@@ -163,10 +222,66 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
   fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
   fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words );
 
-  for ( int i = 0; i < nurls; i++ ) {
-    fprintf( fout, "<h3>%d. <a href=\"%s\">%s</a><h3>\n", i+1, urls[i], urls[i] );
-    fprintf( fout, "<blockquote>%s<p></blockquote>\n", description[i] );
-  }
+  	//number of urlRecords in urlList
+  	int nRecords;
+	nRecords = 0;
+
+	URLRecord ** urlList = new URLRecord * [500];
+
+	//add to urlList
+	for(int i = 0; i < nWords; i++){
+		URLRecordList * p;	//map elements in wordList to urlList
+		p = (URLRecordList *)_wordToURLList->findRecord(wordList[i]);
+
+		while(p != NULL){
+			int duplicate = 0;	//check duplicate
+
+			for(int j = 0; j < nRecords; j++){
+				if(urlList[j] == p->_urlRecord){
+					duplicate = 1;
+					break;
+				}
+			}
+
+			if(duplicate == 0){
+				urlList[nRecords] = p->_urlRecord;	//add to the list
+				nRecords++;
+			}
+			p = p->_next;
+		}	//while
+	}	//for
+
+	//check if wordList maps urlList
+	for(int i = 0; i < nRecords; i++){
+		for(int j = 0; j < nWords; j++){
+			URLRecordList * p;
+			p = (URLRecordList *)_wordToURLList->findRecord(wordList[j]);
+
+			int exists = 0;
+
+			while(p != NULL){
+				if(p->_urlRecord == urlList[i]){
+					exists = 1;
+				}
+				p = p->_next;
+			}
+
+			if(exists == 0)
+				urlList[i] = NULL;
+		}
+	}
+
+	int count = 0;
+
+	for(int i = 0; i < nRecords; i++){
+		if(urlList[i] == NULL)	//skip
+			continue;
+		
+		fprintf(fout, "<h3>%d. <a href=\"%s\">%s</a><h3>\n", count+1, urlList[i]->_url, urlList[i]->_url);
+		fprintf(fout, "<blockquote>%s<p></blockquote>\n", urlList[i]->_description);
+
+		count++;
+	}
 
   // Add search form at the end
   fprintf(fout, "<HR><H2>\n");
