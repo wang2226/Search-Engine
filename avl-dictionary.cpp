@@ -64,7 +64,7 @@ if(prev == NULL){
 		//insert n as root node
 		root = n;
 		nElements++;
-		return true;
+		return false;
 	}
 
 	//tree is not empty, prev points to the parent where new node will be inserted 
