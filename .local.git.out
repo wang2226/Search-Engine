@@ -2038,3 +2038,18 @@ After doing this, you may fix the identity used for this commit with:
  mode change 100644 => 100755 avl-dictionary2.cpp
  rewrite test-avl (68%)
  rewrite test-dict (65%)
+[master 4d0fec3] Commit search engine
+ Committer: Haoran Wang <wang2226@cuda.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 20 insertions(+), 1 deletion(-)
