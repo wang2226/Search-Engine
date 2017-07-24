@@ -9,7 +9,7 @@
 
 #include "avl-dictionary.h"
 
-bool debug = false;
+bool debug = true;
 
 // Constructor
 AVLDictionary::AVLDictionary()
@@ -33,16 +33,15 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 
 	//Find node to insert into 
 	AVLNode * curr = root;
-
 	AVLNode * prev = NULL;
 	
 	while(curr != NULL){
 		prev = curr;
-		if(strcmp(key,curr->key) == 0){
+		if(strverscmp(key,curr->key) == 0){
 			//key found, substitute data
 			curr->data = record;
 			return false;
-		} else if(strcmp(key,curr->key) < 0){
+		} else if(strverscmp(key,curr->key) < 0){
 			curr = curr->left;
 		} else {	//key > curr->key
 			curr = curr->right;
@@ -67,17 +66,17 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	}
 
 	//tree is not empty, prev points to the parent where new node will be inserted 
-	if(prev != NULL) {
-		if(strcmp(key,prev->key) < 0){
+if(prev != NULL){
+	if(strverscmp(key,prev->key) < 0){
 		//insert left
-			prev->left = n;
-		} else {
+		prev->left = n;
+	} else {
 		//insert right
 		prev->right = n;
-		}
-
-		n->parent = prev;
 	}
+
+	n->parent = prev;
+}
 
 	//Height might not be valid anymore.
 	AVLNode * m = n->parent;
@@ -86,7 +85,8 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 		if(m->left != NULL){	//check if left exists
 			maxheight = m->left->height;
 		} 
-		if(m->right != NULL && m->right->height > maxheight){
+		//if(m->right != NULL && m->right->height > maxheight){
+		if(m->right != NULL ){
 			maxheight = m->right->height;
 		}
 		m->height = maxheight + 1;
@@ -319,9 +319,9 @@ AVLDictionary::findRecord( KeyType key)
 	AVLNode * p = root;
 
 	while(p != NULL){
-		if(strcmp(p->key,key) == 0){
+		if(strverscmp(p->key,key) == 0){
 			return (DataType)p->data;
-		} else if(strcmp(p->key,key) > 0){
+		} else if(strverscmp(p->key,key) > 0){
 			p = p->left;
 		} else {	//p->key < key
 			p = p->right;
@@ -337,9 +337,9 @@ AVLDictionary::findNode(KeyType key){
 	AVLNode * p = root;
 
 	while(p != NULL){
-		if(strcmp(p->key,key) == 0){
+		if(strverscmp(p->key,key) == 0){
 			return p;
-		} else if(strcmp(p->key,key) > 0){
+		} else if(strverscmp(p->key,key) > 0){
 			p = p->left;
 		} else {	//p->key < key
 			p = p->right;
@@ -369,6 +369,8 @@ AVLDictionary::removeElement(KeyType key)
 	}
 		
 	if(node->left == NULL && node->right == NULL){	//node to remove has no children
+if(node->parent == NULL)
+	return false;
 
 		if(node == node->parent->left){	//node to remove is its parent's left child
 			node->parent->left = NULL;

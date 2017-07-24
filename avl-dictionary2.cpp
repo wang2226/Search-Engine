@@ -31,7 +31,7 @@ AVLDictionary::checkRecursive(AVLNode * node) {
 
 	if (node->left!=NULL) {
 		// Make sure that it is sorted
-		if ( strcmp(node->key, node->left->key) <= 0) {
+		if ( strverscmp(node->key, node->left->key) <= 0) {
 			fprintf(stderr,
 				"*** NOT SORTED: parent->key=\"%s\" <= left->key=\"%s\"\n",
 			       node->key, node->left->key);
@@ -41,7 +41,7 @@ AVLDictionary::checkRecursive(AVLNode * node) {
 
 	if (node->right!=NULL) {
 		// Make sure that it is sorted
-		if ( strcmp(node->key, node->right->key) >= 0) {
+		if ( strverscmp(node->key, node->right->key) >= 0) {
 			fprintf(stderr,
 				"*** NOT SORTED: parent->key=\"%s\" >= right->key=\"%s\"\n",
 				node->key, node->right->key);
