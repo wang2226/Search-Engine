@@ -1,0 +1,43 @@
+Mon Jul 24 11:19:48 EDT 2017
++start 
+Temporary breakpoint 1 at 0x400bd8: file test-avl.cpp, line 9.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Temporary breakpoint 1, main (argc=1, argv=0x7fffffffe308) at test-avl.cpp:9
+9	{
++n
+10		printf("-----------------------------------\n");
++n
+11		printf("Running test-avl\n");
++n
+12		AVLDictionary * dict= new AVLDictionary();
++n
+15		int max = 2;
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++n
+17		for ( i = 0; i < max; i++) {
++p dict->rook
+There is no member or method named rook.
++p dict->root
+$1 = (AVLNode *) 0x604030
++p dict->root->key
+$2 = (KeyType) 0x7fffffffe1f0 "k0"
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++p dict->root->key
+$3 = (KeyType) 0x7fffffffe1f0 "k0"
++n
+21			dict->addRecord(key, (void*) k);
++p dict->root->key
+$4 = (KeyType) 0x7fffffffe1f0 "k1"
+Quit
++q

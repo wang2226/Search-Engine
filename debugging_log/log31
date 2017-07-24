@@ -1,0 +1,48 @@
+Mon Jul 24 11:22:03 EDT 2017
++start
+Temporary breakpoint 1 at 0x400bd8: file test-avl.cpp, line 9.
+Starting program: /u/data/u89/wang2226/cs251/lab3-src/test-avl 
+
+Temporary breakpoint 1, main (argc=1, argv=0x7fffffffe308) at test-avl.cpp:9
+9	{
++n
+10		printf("-----------------------------------\n");
++n
+11		printf("Running test-avl\n");
++n
+12		AVLDictionary * dict= new AVLDictionary();
++n
+15		int max = 2;
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++p dict->root->key
+Cannot access memory at address 0x0
++n
+17		for ( i = 0; i < max; i++) {
++n
+19			long k = i%79;
++p dict->root->key
+$1 = (KeyType) 0x604070 "k0"
++n
+20			sprintf(key, "k%ld", k);
++n
+21			dict->addRecord(key, (void*) k);
++p dict->root->key
+$2 = (KeyType) 0x604070 "k0"
++s
+AVLDictionary::addRecord (this=0x604010, key=0x7fffffffe1f0 "k1", record=0x1)
+    at avl-dictionary.cpp:25
+25		if ( debug) {
++n
+26			printf("------------------------------------\n");
++p dict->root->key
+No symbol "dict" in current context.
++p root->key
+$3 = (KeyType) 0x604070 "k0"
++q
