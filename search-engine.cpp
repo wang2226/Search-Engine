@@ -224,7 +224,7 @@ SearchEngine::dispatch( FILE * fout, const char * documentRequested)
 
 
   fprintf( fout, "<TITLE>Search Results</TITLE>\r\n");
-  fprintf(fout, "<BODY link background=\"https://wallpaperscraft.com/image/glare_light_light_background_36832_2560x1600.jpg\">\n");
+  fprintf(fout, "<BODY link background=\"https://wallpaperscraft.com/image/glare_light_light_background_36832_2560x1600.jpg\" style=\"background-attachment: fixed; background-repeat: no-repeat; background-size: 100% 100%;\">\n");
   fprintf( fout, "<H1> <Center><em>Boiler Search</em></H1>\n");
   fprintf( fout, "<H2> Search Results for \"%s\"</center></H2>\n", words);
 
