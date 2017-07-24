@@ -67,15 +67,17 @@ AVLDictionary::addRecord( KeyType key, DataType record)
 	}
 
 	//tree is not empty, prev points to the parent where new node will be inserted 
-	if(strcmp(key,prev->key) < 0){
+	if(prev != NULL) {
+		if(strcmp(key,prev->key) < 0){
 		//insert left
-		prev->left = n;
-	} else {
+			prev->left = n;
+		} else {
 		//insert right
 		prev->right = n;
-	}
+		}
 
-	n->parent = prev;
+		n->parent = prev;
+	}
 
 	//Height might not be valid anymore.
 	AVLNode * m = n->parent;
